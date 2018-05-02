@@ -1,0 +1,30 @@
+[
+	{
+        id: 1,
+        text: '我的评审任务',
+        children: 
+        [
+        	{
+	            id: 11,
+	            text: '未评审',
+	            href : 'review/EquReview_list.action?queryStatus=1&expertType=1&queryExpertAuditStatus=1',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	},
+        	{
+	            id: 12,
+	            text: '已评审',
+	            href : 'review/EquReview_list.action?queryStatus=1&expertType=1&queryExpertAuditStatus=2',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	}        	
+        ]
+ 	},
+	{
+        id: 2,
+        text: '全组评审任务',
+        href : 'review/EquReview_list.action?queryStatus=3&expertType=1',
+        hrefTarget : 'list_iframe',
+        leaf: true
+    }
+ ]

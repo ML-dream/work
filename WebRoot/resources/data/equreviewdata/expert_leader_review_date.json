@@ -1,0 +1,58 @@
+[
+	{
+        id: 1,
+        text: '我的评审任务',
+        children: 
+        [
+        	{
+	            id: 11,
+	            text: '未评审',
+	            href : 'review/EquReview_leaderlist.action?queryStatus=1&expertType=2&queryExpertAuditStatus=1',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	},
+        	{
+	            id: 12,
+	            text: '已评审',
+	            href : 'review/EquReview_leaderlist.action?queryStatus=1&expertType=2&queryExpertAuditStatus=2',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	}        	
+        ]
+ 	},
+	{
+        id: 2,
+        text: '全组评审任务',
+        href : 'review/EquReview_leaderlist.action?queryStatus=3&expertType=1',
+        hrefTarget : 'list_iframe',
+        leaf: true
+    },
+    {
+        id: 3,
+        text: '专家组长任务',
+        children: 
+        [
+        	{
+	            id: 31,
+	            text: '未确认的评审',
+	            href : 'review/BEquipmentExpertLeader_confirmLeaderlist.action?queryStatus=4',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	},
+        	{
+	            id: 32,
+	            text: '已确认的评审',
+	            href : 'review/BEquipmentExpertLeader_confirmLeaderlist.action?queryStatus=3',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	},
+        	{
+	            id: 33,
+	            text: '全部',
+	            href : 'review/BEquipmentExpertLeader_confirmLeaderlist.action?queryStatus=0',
+	            hrefTarget : 'list_iframe',
+	            leaf: true
+        	}
+        ]
+ 	}
+ ]
