@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	        <!-- <div id="grid1" class="mini-datagrid" style="width:100%;height:320px;"
 				         borderStyle="border:0;" multiSelect="true"  idField="id" showSummaryRow="true" allowAlternating="true" showPager="true"
-				         url="dataFeedback" onrowdblclick="rowdblclick">
+				         url="DataCollection/datadataFeedback" onrowdblclick="rowdblclick">
 				        <div property="columns">
 				            <div type="indexcolumn"></div>
 				            <div name="action" width="50" headerAlign="center" align="center" renderer="onOperatePower"
@@ -174,18 +174,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
    		}
    		
-   		
-   		function onIDCardsValidation(e) {
-            if (e.isValid) {
-                var pattern = /\d*/;
-                if (e.value.length < 15 || e.value.length > 18 || pattern.test(e.value) == false) {
-                    e.errorText = "必须输入15~18位数字";
-                    e.isValid = false;
-                }
-            }
-        }
-
-   	
 
    		var Genders = [{ id: '0', text: '未读' }, { id: '1', text: '已读'}];
         function onGenderRenderer(e) {

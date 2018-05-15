@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE web-app>  
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		 version="2.5" 
-		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
-		 					 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <listener>
-	  	<listener-class>DataCollection.MachineCollection</listener-class>
-	</listener>
-  
-  
-  	<listener>
-	  	<listener-class>com.wl.listeners.SeverAndroid</listener-class>
-	</listener>
-	<session-config> 
-	<session-timeout>120</session-timeout>  
-	
+    <listener-class>DataCollection.MachineCollection</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.wl.listeners.SeverAndroid</listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>120</session-timeout>
   </session-config>
-	
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
@@ -40,29 +31,18 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-  	<welcome-file>login.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
     <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
-  
-
-    <!--用来启动 log4jConfigLocation的servlet -->  
-    <servlet>  
-        <servlet-name>Log4JInitServlet</servlet-name>  
-        <servlet-class>com.wl.filters.Log4JInitServlet</servlet-class>  
-        <init-param>  
-            <param-name>log4j-properties-location</param-name>  
-            <param-value>/WEB-INF/classes/log4j.properties</param-value>  
-        </init-param>  
-        <load-on-startup>1</load-on-startup>  
-    </servlet>  
-  
-
-  
-  
-  
-  
-  
-  
+  <servlet>
+    <servlet-name>Log4JInitServlet</servlet-name>
+    <servlet-class>com.wl.filters.Log4JInitServlet</servlet-class>
+    <init-param>
+      <param-name>log4j-properties-location</param-name>
+      <param-value>/WEB-INF/classes/log4j.properties</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -212,872 +192,817 @@
     <servlet-class>cfmes.servlet.LoginHandler</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddUserServlet</display-name>
     <servlet-name>AddUserServlet</servlet-name>
     <servlet-class>com.wl.testaction.AddUserServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditUserInfoServlet</display-name>
     <servlet-name>EditUserInfoServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditUserInfoServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeleteUserInfo</display-name>
     <servlet-name>DeleteUserInfo</servlet-name>
     <servlet-class>com.wl.testaction.DeleteUserInfo</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>UpdateUser</display-name>
     <servlet-name>UpdateUser</servlet-name>
     <servlet-class>com.wl.testaction.UpdateUser</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ChangePasswordServlet</display-name>
     <servlet-name>ChangePasswordServlet</servlet-name>
     <servlet-class>com.wl.testaction.ChangePasswordServlet</servlet-class>
   </servlet>
-    <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>AddMachineServlet</display-name>
     <servlet-name>AddMachineServlet</servlet-name>
     <servlet-class>com.wl.testaction.AddMachineServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditMachineInfoServlet</display-name>
     <servlet-name>EditMachineInfoServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditMachineInfoServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeleteMachineInfo</display-name>
     <servlet-name>DeleteMachineInfo</servlet-name>
     <servlet-class>com.wl.testaction.DeleteMachineInfo</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>UpdateMachine</display-name>
     <servlet-name>UpdateMachine</servlet-name>
     <servlet-class>com.wl.testaction.UpdateMachine</servlet-class>
   </servlet>
-
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddEmployeeServlet</display-name>
     <servlet-name>AddEmployeeServlet</servlet-name>
     <servlet-class>com.wl.testaction.AddEmployeeServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditEmployeeInfoServlet</display-name>
     <servlet-name>EditEmployeeInfoServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditEmployeeInfoServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeleteEmployeeInfo</display-name>
     <servlet-name>DeleteEmployeeInfo</servlet-name>
     <servlet-class>com.wl.testaction.DeleteEmployeeInfo</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>UpdateEmployee</display-name>
     <servlet-name>UpdateEmployee</servlet-name>
     <servlet-class>com.wl.testaction.UpdateEmployee</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddAOServlet</display-name>
     <servlet-name>AddAOServlet</servlet-name>
     <servlet-class>com.wl.testaction.AddAOServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditAOInfoServlet</display-name>
     <servlet-name>EditAOInfoServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditAOInfoServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeleteAOInfo</display-name>
     <servlet-name>DeleteAOInfo</servlet-name>
     <servlet-class>com.wl.testaction.DeleteAOInfo</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>UpdateAO</display-name>
     <servlet-name>UpdateAO</servlet-name>
     <servlet-class>com.wl.testaction.UpdateAO</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AoPlanServlet</display-name>
     <servlet-name>AoPlanServlet</servlet-name>
     <servlet-class>com.wl.testaction.AoPlanServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AoStationPlan</display-name>
     <servlet-name>AoStationPlan</servlet-name>
     <servlet-class>com.wl.testaction.AoStationPlan</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>QueryStationPlanOne</display-name>
     <servlet-name>QueryStationPlanOne</servlet-name>
     <servlet-class>com.wl.testaction.QueryStationPlanOne</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AoDispatch_select</display-name>
     <servlet-name>AoDispatch_select</servlet-name>
     <servlet-class>com.wl.testaction.AoDispatch_select</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AoDispatchFinish</display-name>
     <servlet-name>AoDispatchFinish</servlet-name>
     <servlet-class>com.wl.testaction.AoDispatchFinish</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>aoDispatch_Delete</display-name>
     <servlet-name>aoDispatch_Delete</servlet-name>
     <servlet-class>com.wl.testaction.aoDispatch_Delete</servlet-class>
   </servlet>
-  <!-- 
   <servlet>
-  	<description></description>
-    <display-name>websocket</display-name>
-    <servlet-name>websocket</servlet-name>
-    <servlet-class>com.wl.websocketDNC.WebSocketTest</servlet-class>
-  </servlet>
-  
-   -->
-  
-  <servlet>
-  	<description></description>
+    <description></description>
     <display-name>jianceServlet</display-name>
     <servlet-name>jianceServlet</servlet-name>
     <servlet-class>com.wl.testaction.JianceServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddGT</display-name>
     <servlet-name>AddGT</servlet-name>
     <servlet-class>com.wl.testaction.AddGT</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>TongjiServlet</display-name>
     <servlet-name>TongjiServlet</servlet-name>
     <servlet-class>com.wl.testaction.TongjiServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>TongjiDetailServlet</display-name>
     <servlet-name>TongjiDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.TongjiDetailServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GojianceServlet</display-name>
     <servlet-name>GojianceServlet</servlet-name>
     <servlet-class>com.wl.testaction.GojianceServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoDispatchServlet</display-name>
     <servlet-name>GoDispatchServlet</servlet-name>
     <servlet-class>com.wl.testaction.GoDispatchServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ItemDetailServlet</display-name>
     <servlet-name>ItemDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.ItemDetailServlet</servlet-class>
   </servlet>
-  
-   <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>add_res</display-name>
     <servlet-name>add_res</servlet-name>
     <servlet-class>com.wl.testaction.add_res</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditEmployeeDetailServlet</display-name>
     <servlet-name>EditEmployeeDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditEmployeeDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DoEditEmployeeDetailServlet</display-name>
     <servlet-name>DoEditEmployeeDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.DoEditEmployeeDetailServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddCustomerServlet</display-name>
     <servlet-name>AddCustomerServlet</servlet-name>
     <servlet-class>com.wl.testaction.AddCustomerServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowCustomerInfoServlet</display-name>
     <servlet-name>ShowCustomerInfoServlet</servlet-name>
     <servlet-class>com.wl.testaction.ShowCustomerInfoServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditCustomerDetailServlet</display-name>
     <servlet-name>EditCustomerDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.EditCustomerDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DoEditCustomerDetailServlet</display-name>
     <servlet-name>DoEditCustomerDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.DoEditCustomerDetailServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOrderDetailServlet</display-name>
     <servlet-name>AddOrderDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.AddOrderDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOrderServlet</display-name>
     <servlet-name>AddOrderServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.AddOrderServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditOrderSpecServlet</display-name>
     <servlet-name>EditOrderSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.EditOrderSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderDetailListServlet</display-name>
     <servlet-name>OrderDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderDetailSpecServlet</display-name>
     <servlet-name>OrderDetailSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderDetailSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderListServlet</display-name>
     <servlet-name>OrderListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderSpecServlet</display-name>
     <servlet-name>OrderSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOrderDetailListServlet</display-name>
     <servlet-name>GoOrderDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoOrderDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetItemTypeServlet</display-name>
     <servlet-name>GetItemTypeServlet</servlet-name>
     <servlet-class>com.wl.testaction.itemManage.GetItemTypeServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetItemServlet</display-name>
     <servlet-name>GetItemServlet</servlet-name>
     <servlet-class>com.wl.testaction.itemManage.GetItemServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddItemServlet</display-name>
     <servlet-name>AddItemServlet</servlet-name>
     <servlet-class>com.wl.testaction.itemManage.AddItemServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddMachineServ</display-name>
     <servlet-name>AddMachineServ</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.AddMachineServ</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditMachineSpecServlet</display-name>
     <servlet-name>EditMachineSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.EditMachineSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineListServlet</display-name>
     <servlet-name>MachineListServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineSpecServlet</display-name>
     <servlet-name>MachineSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineSpecServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddPriceManHourServlet</display-name>
     <servlet-name>AddPriceManHourServlet</servlet-name>
     <servlet-class>com.wl.testaction.priceManHour.AddPriceManHourServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DoEditPriceManHourServlet</display-name>
     <servlet-name>DoEditPriceManHourServlet</servlet-name>
     <servlet-class>com.wl.testaction.priceManHour.DoEditPriceManHourServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditPriceManHourServlet</display-name>
     <servlet-name>EditPriceManHourServlet</servlet-name>
     <servlet-class>com.wl.testaction.priceManHour.EditPriceManHourServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowPriceManHourServlet</display-name>
     <servlet-name>ShowPriceManHourServlet</servlet-name>
     <servlet-class>com.wl.testaction.priceManHour.ShowPriceManHourServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetOrderTreeServlet</display-name>
     <servlet-name>GetOrderTreeServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GetOrderTreeServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ItemSpecServlet</display-name>
     <servlet-name>ItemSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.itemManage.ItemSpecServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>QuotationProductServlet</display-name>
     <servlet-name>QuotationProductServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.QuotationProductServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowQuotationProductServlet</display-name>
     <servlet-name>ShowQuotationProductServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.ShowQuotationProductServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoQuotationProductServlet</display-name>
     <servlet-name>GoQuotationProductServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoQuotationProductServlet</servlet-class>
   </servlet>
-  
-   <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>GoOrderPayedListServlet</display-name>
     <servlet-name>GoOrderPayedListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoOrderPayedListServlet</servlet-class>
   </servlet>
-   <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>OrderPayedListServlet</display-name>
     <servlet-name>OrderPayedListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderPayedListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderAllStatusListServlet</display-name>
     <servlet-name>OrderAllStatusListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderAllStatusListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ChangeOrderStatusServlet</display-name>
     <servlet-name>ChangeOrderStatusServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.ChangeOrderStatusServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ChangeProductStatusServlet</display-name>
     <servlet-name>ChangeProductStatusServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.ChangeProductStatusServlet</servlet-class>
   </servlet>
-   <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>EditOrderDetailSpecServlet</display-name>
     <servlet-name>EditOrderDetailSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.EditOrderDetailSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderPayedSpecServlet</display-name>
     <servlet-name>OrderPayedSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderPayedSpecServlet</servlet-class>
   </servlet>
-   <servlet>
-  	<description></description>
+  <servlet>
+    <description></description>
     <display-name>OrderPayedDetailListServlet</display-name>
     <servlet-name>OrderPayedDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderPayedDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOrderPayedDetailListServlet</display-name>
     <servlet-name>GoOrderPayedDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoOrderPayedDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoCheckOrderDetailListServlet</display-name>
     <servlet-name>GoCheckOrderDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoCheckOrderDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>CheckOrderDetailSpecServlet</display-name>
     <servlet-name>CheckOrderDetailSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.CheckOrderDetailSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>QuotationTotalServlet</display-name>
     <servlet-name>QuotationTotalServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.QuotationTotalServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoQuotationTotalServlet</display-name>
     <servlet-name>GoQuotationTotalServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoQuotationTotalServlet</servlet-class>
   </servlet>
-  
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddDeptServlet</display-name>
     <servlet-name>AddDeptServlet</servlet-name>
     <servlet-class>com.wl.testaction.deptManage.AddDeptServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeptListServlet</display-name>
     <servlet-name>DeptListServlet</servlet-name>
     <servlet-class>com.wl.testaction.deptManage.DeptListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DeptSpecServlet</display-name>
     <servlet-name>DeptSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.deptManage.DeptSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditDeptSpecServlet</display-name>
     <servlet-name>EditDeptSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.deptManage.EditDeptSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetDeptTreeServlet</display-name>
     <servlet-name>GetDeptTreeServlet</servlet-name>
     <servlet-class>com.wl.testaction.deptManage.GetDeptTreeServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetMachTypeServlet</display-name>
     <servlet-name>GetMachTypeServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.GetMachTypeServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetMachStatusServlet</display-name>
     <servlet-name>GetMachStatusServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.GetMachStatusServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddMachineRepairServlet</display-name>
     <servlet-name>AddMachineRepairServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.AddMachineRepairServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditMachineRepairSpecServlet</display-name>
     <servlet-name>EditMachineRepairSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.EditMachineRepairSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineRepairListServlet</display-name>
     <servlet-name>MachineRepairListServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineRepairListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineRepairSpecServlet</display-name>
     <servlet-name>MachineRepairSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineRepairSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddMachineDiscardServlet</display-name>
     <servlet-name>AddMachineDiscardServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.AddMachineDiscardServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditMachineDiscardSpecServlet</display-name>
     <servlet-name>EditMachineDiscardSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.EditMachineDiscardSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineDiscardListServlet</display-name>
     <servlet-name>MachineDiscardListServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineDiscardListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineDiscardSpecServlet</display-name>
     <servlet-name>MachineDiscardSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineDiscardSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderConfirmServlet</display-name>
     <servlet-name>OrderConfirmServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderConfirmServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddMachineHireServlet</display-name>
     <servlet-name>AddMachineHireServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.AddMachineHireServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditMachineHireSpecServlet</display-name>
     <servlet-name>EditMachineHireSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.EditMachineHireSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineHireListServlet</display-name>
     <servlet-name>MachineHireListServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineHireListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>MachineHireSpecServlet</display-name>
     <servlet-name>MachineHireSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.MachineHireSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetOrderHeadServlet</display-name>
     <servlet-name>GetOrderHeadServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GetOrderHeadServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOrderAllDetailServlet</display-name>
     <servlet-name>GoOrderAllDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoOrderAllDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OrderAllDetailListServlet</display-name>
     <servlet-name>OrderAllDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderAllDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOrderConfirmServlet</display-name>
     <servlet-name>GoOrderConfirmServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoOrderConfirmServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowOrderDetailSpecServlet</display-name>
     <servlet-name>ShowOrderDetailSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.ShowOrderDetailSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddCustomerItemServlet</display-name>
     <servlet-name>AddCustomerItemServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.AddCustomerItemServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoCustomerItemDetailServlet</display-name>
     <servlet-name>GoCustomerItemDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoCustomerItemDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>CustomerItemDetailListServlet</display-name>
     <servlet-name>CustomerItemDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.CustomerItemDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetPriceUnitServlet</display-name>
     <servlet-name>GetPriceUnitServlet</servlet-name>
     <servlet-class>com.wl.testaction.utils.GetPriceUnitServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoCustomerItemSpecServlet</display-name>
     <servlet-name>GoCustomerItemSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoCustomerItemSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>CustomerItemSpecServlet</display-name>
     <servlet-name>CustomerItemSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.CustomerItemSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetCompanyTypeServlet</display-name>
     <servlet-name>GetCompanyTypeServlet</servlet-name>
     <servlet-class>com.wl.testaction.utils.GetCompanyTypeServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOutAssistComServlet</display-name>
     <servlet-name>AddOutAssistComServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.AddOutAssistComServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditOutAssistComSpecServlet</display-name>
     <servlet-name>EditOutAssistComSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.EditOutAssistComSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistComListServlet</display-name>
     <servlet-name>OutAssistComListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistComListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistComSpecServlet</display-name>
     <servlet-name>OutAssistComSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistComSpecServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOutAssistServlet</display-name>
     <servlet-name>AddOutAssistServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.AddOutAssistServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistListServlet</display-name>
     <servlet-name>OutAssistListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistListServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistSpecServlet</display-name>
     <servlet-name>OutAssistSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditOutAssistSpecServlet</display-name>
     <servlet-name>EditOutAssistSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.EditOutAssistSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoQuotationAllDetailServlet</display-name>
     <servlet-name>GoQuotationAllDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.GoQuotationAllDetailServlet</servlet-class>
   </servlet>
-  
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOutAssistDetailServlet</display-name>
     <servlet-name>AddOutAssistDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.AddOutAssistDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditOutAssistDetailServlet</display-name>
     <servlet-name>EditOutAssistDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.EditOutAssistDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistDetailListServlet</display-name>
     <servlet-name>OutAssistDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistDetailListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistDetailServlet</display-name>
     <servlet-name>OutAssistDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistDetailServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOutAssistDetailListServlet</display-name>
     <servlet-name>GoOutAssistDetailListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.GoOutAssistDetailListServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddOutAssistGetServlet</display-name>
     <servlet-name>AddOutAssistGetServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.AddOutAssistGetServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditOutAssistGetSpecServlet</display-name>
     <servlet-name>EditOutAssistGetSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.EditOutAssistGetSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistGetListServlet</display-name>
     <servlet-name>OutAssistGetListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistGetListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>OutAssistGetSpecServlet</display-name>
     <servlet-name>OutAssistGetSpecServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistGetSpecServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GoOutAssistGetListServlet</display-name>
     <servlet-name>GoOutAssistGetListServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.GoOutAssistGetListServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>GetAuthorityServlet</display-name>
     <servlet-name>GetAuthorityServlet</servlet-name>
     <servlet-class>com.wl.testaction.utils.GetAuthorityServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>AddSysUsersServlet</display-name>
     <servlet-name>AddSysUsersServlet</servlet-name>
     <servlet-class>com.wl.testaction.sysManage.AddSysUsersServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DoEditSysUsersServlet</display-name>
     <servlet-name>DoEditSysUsersServlet</servlet-name>
     <servlet-class>com.wl.testaction.sysManage.DoEditSysUsersServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>EditSysUsersServlet</display-name>
     <servlet-name>EditSysUsersServlet</servlet-name>
     <servlet-class>com.wl.testaction.sysManage.EditSysUsersServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowSysUsersServlet</display-name>
     <servlet-name>ShowSysUsersServlet</servlet-name>
     <servlet-class>com.wl.testaction.sysManage.ShowSysUsersServlet</servlet-class>
   </servlet>
-  
-  
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>FileUpload</display-name>
     <servlet-name>FileUpload</servlet-name>
     <servlet-class>com.wl.testaction.fileManage.FileUpload</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>SmartUpladServlet</display-name>
     <servlet-name>SmartUpladServlet</servlet-name>
     <servlet-class>com.wl.testaction.fileManage.SmartUpladServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ShowFileServlet</display-name>
     <servlet-name>ShowFileServlet</servlet-name>
     <servlet-class>com.wl.testaction.fileManage.ShowFileServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DownLoadServlet</display-name>
     <servlet-name>DownLoadServlet</servlet-name>
     <servlet-class>com.wl.testaction.fileManage.DownLoadServlet</servlet-class>
   </servlet>
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>DownLoadOrderFileServlet</display-name>
     <servlet-name>DownLoadOrderFileServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.DownLoadOrderFileServlet</servlet-class>
   </servlet>
-  
   <servlet>
-  	<description></description>
+    <description></description>
     <display-name>ActionServlet</display-name>
     <servlet-name>ActionServlet</servlet-name>
     <servlet-class>com.wl.testaction.craftworkManage.ActionServlet</servlet-class>
@@ -1087,13 +1012,11 @@
     <servlet-name>BaseServlet</servlet-name>
     <servlet-class>com.wl.testaction.craftworkManage.BaseServlet</servlet-class>
   </servlet>
-  
   <servlet>
     <display-name>GetMachineServlet</display-name>
     <servlet-name>GetMachineServlet</servlet-name>
     <servlet-class>com.wl.testaction.machineManage.GetMachineServlet</servlet-class>
   </servlet>
-  
   <servlet>
     <display-name>GetWorkBranchServlet</display-name>
     <servlet-name>GetWorkBranchServlet</servlet-name>
@@ -1104,14 +1027,11 @@
     <servlet-name>EditOrderCheckServlet</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.EditOrderCheckServlet</servlet-class>
   </servlet>
-  
-  
   <servlet>
     <display-name>PartPlanBaseServlet</display-name>
     <servlet-name>PartPlanBaseServlet</servlet-name>
     <servlet-class>com.wl.testaction.partPlanManage.BaseServlet</servlet-class>
   </servlet>
-  
   <servlet>
     <display-name>ProcessFlowCard</display-name>
     <servlet-name>ProcessFlowCard</servlet-name>
@@ -1255,18 +1175,6 @@
     <servlet-name>ShowNbarcode</servlet-name>
     <servlet-class>com.xm.testaction.qualitycheck.statejudge.ShowNbarcode</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-
-
-
-
-  
   <servlet>
     <display-name>GetProductStatus</display-name>
     <servlet-name>GetProductStatus</servlet-name>
@@ -1380,7 +1288,7 @@
     <servlet-name>ToStateJudge2</servlet-name>
     <servlet-class>com.xm.testaction.qualitycheck.cardhandle.ToStateJudge2</servlet-class>
   </servlet>
- <servlet>
+  <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>StockServlet</servlet-name>
@@ -1488,10 +1396,7 @@
     <servlet-name>doEditWarehouseServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.doEditWarehouseServlet</servlet-class>
   </servlet>
-
-
-
-    <servlet>
+  <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>CheckoutSheetIdServlet</servlet-name>
@@ -1707,10 +1612,6 @@
     <servlet-name>doEditLlSheetServlet</servlet-name>
     <servlet-class>com.wl.testaction.Ll.doEditLlSheetServlet</servlet-class>
   </servlet>
-
-
-
-
   <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
@@ -2485,7 +2386,6 @@
     <servlet-name>OrderListServlet1</servlet-name>
     <servlet-class>com.wl.testaction.orderManage.OrderListServlet1</servlet-class>
   </servlet>
-  <!-- 11-14 -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -2534,7 +2434,7 @@
     <servlet-name>ProductServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.productcheckin.ProductServlet</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>showProductCheckinServlet</servlet-name>
@@ -2744,7 +2644,6 @@
     <servlet-name>saveCustomerPayServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.payment.saveCustomerPayServlet</servlet-class>
   </servlet>
-  <!-- mintao -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -3649,13 +3548,12 @@
     <display-name>SendNoticeServlet</display-name>
     <servlet-name>SendNoticeServlet</servlet-name>
     <servlet-class>com.wl.testaction.noticeManage.SendNoticeServlet</servlet-class>
-  </servlet> 
-  
+  </servlet>
   <servlet>
     <display-name>NoticeListServlet</display-name>
     <servlet-name>NoticeListServlet</servlet-name>
     <servlet-class>com.wl.testaction.noticeManage.NoticeListServlet</servlet-class>
-  </servlet> 
+  </servlet>
   <servlet>
     <display-name>NoticeDetailServlet</display-name>
     <servlet-name>NoticeDetailServlet</servlet-name>
@@ -3665,7 +3563,7 @@
     <display-name>NoticeHaveSendServlet</display-name>
     <servlet-name>NoticeHaveSendServlet</servlet-name>
     <servlet-class>com.wl.testaction.noticeManage.NoticeHaveSendServlet</servlet-class>
-  </servlet> 
+  </servlet>
   <servlet>
     <description>SeeProduceDetail</description>
     <display-name>SeeProduceDetail</display-name>
@@ -3761,7 +3659,7 @@
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>deletePoApplyDetailServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.apply.deletePoApplyDetailServlet</servlet-class>
-</servlet>
+  </servlet>
   <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
@@ -3780,28 +3678,27 @@
     <servlet-name>RejStateSave</servlet-name>
     <servlet-class>com.xm.testaction.qualitycheck.statejudge.RejStateSave</servlet-class>
   </servlet>
-<servlet>
+  <servlet>
     <display-name>RejStateExcelOut</display-name>
     <servlet-name>RejStateExcelOut</servlet-name>
     <servlet-class>com.xm.testaction.qualitycheck.statejudge.RejStateExcelOut</servlet-class>
   </servlet>
- <servlet>
+  <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>SalesStatementServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.salesstatement.SalesStatementServlet</servlet-class>
-</servlet>
-<servlet-mapping>
+  </servlet>
+  <servlet-mapping>
     <servlet-name>SalesStatementServlet</servlet-name>
     <url-pattern>/SalesStatementServlet</url-pattern>
-</servlet-mapping>
-<servlet>
+  </servlet-mapping>
+  <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>SalesStatementStatisticsServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.salesstatement.SalesStatementStatisticsServlet</servlet-class>
-</servlet>
-
+  </servlet>
   <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
@@ -3928,7 +3825,7 @@
     <servlet-name>empSumExcelOut</servlet-name>
     <servlet-class>com.xm.testaction.qualitycheck.statejudge.empSumExcelOut</servlet-class>
   </servlet>
- <servlet>
+  <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
     <servlet-name>addCustomerPaymentServlet</servlet-name>
@@ -3952,7 +3849,6 @@
     <servlet-name>RemarkPurchase</servlet-name>
     <servlet-class>com.wl.testaction.po.RemarkPurchase</servlet-class>
   </servlet>
-
   <servlet>
     <description>xuqing-LoadRfidBarcode</description>
     <display-name>LoadRfidBarcode</display-name>
@@ -3983,7 +3879,6 @@
     <servlet-name>seeEditDataMaintenanceServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.payment.seeEditDataMaintenanceServlet</servlet-class>
   </servlet>
-
   <servlet>
     <description>DoeditStockServlet</description>
     <display-name>DoeditStockServlet</display-name>
@@ -4038,7 +3933,7 @@
     <servlet-name>PrStatisticsExcelServlet</servlet-name>
     <servlet-class>com.wl.testaction.warehouse.PR.PrStatisticsExcelServlet</servlet-class>
   </servlet>
-<servlet>
+  <servlet>
     <description>xuqing-LoadRfidBarcode</description>
     <display-name>LoadRfidBarcode</display-name>
     <servlet-name>StockListExcelServlet</servlet-name>
@@ -4092,7 +3987,7 @@
     <servlet-name>OutAssistStatToExcelServlet</servlet-name>
     <servlet-class>com.wl.testaction.outAssistManage.OutAssistStatToExcelServlet</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <description>xuqing-LoadRfidBarcode</description>
     <display-name>LoadRfidBarcode</display-name>
     <servlet-name>refreshOrderStatusServlet</servlet-name>
@@ -4128,630 +4023,423 @@
     <servlet-name>dataFeedback</servlet-name>
     <servlet-class>DataCollection.dataFeedback</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SalesStatementExcelServlet</servlet-name>
     <url-pattern>/SalesStatementExcelServlet</url-pattern>
   </servlet-mapping>
-
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SalesStatementStatisticsServlet</servlet-name>
     <url-pattern>/SalesStatementStatisticsServlet</url-pattern>
-</servlet-mapping>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-  
-  
-  
-<!--
-  <filter>
-  	<filter-name>LoginFilter</filter-name>
-  	<filter-class>com.wl.filters.LoginFilter</filter-class>
-  	<init-param>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-  	</init-param>
-  	<init-param>
-		<param-name>loginPage</param-name>
-		<param-value>/login.jsp</param-value>
-  	</init-param>
-  </filter>
-  <filter-mapping>
-  	<filter-name>LoginFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-
- -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>NoticeHaveSendServlet</servlet-name>
     <url-pattern>/NoticeHaveSendServlet</url-pattern>
-</servlet-mapping> 
- 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>NoticeDetailServlet</servlet-name>
     <url-pattern>/NoticeDetailServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>NoticeListServlet</servlet-name>
     <url-pattern>/NoticeListServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SendNoticeServlet</servlet-name>
     <url-pattern>/SendNoticeServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetProductStatus</servlet-name>
     <url-pattern>/GetProductStatus</url-pattern>
-</servlet-mapping> 
- 
- 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PartPlanBaseServlet</servlet-name>
     <url-pattern>/PartPlanBaseServlet</url-pattern>
-</servlet-mapping>  
-
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditOrderCheckServlet</servlet-name>
     <url-pattern>/EditOrderCheckServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetWorkBranchServlet</servlet-name>
     <url-pattern>/GetWorkBranchServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetMachineServlet</servlet-name>
     <url-pattern>/GetMachineServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>BaseServlet</servlet-name>
     <url-pattern>/BaseServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ActionServlet</servlet-name>
     <url-pattern>/ActionServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DownLoadOrderFileServlet</servlet-name>
     <url-pattern>/DownLoadOrderFileServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DownLoadServlet</servlet-name>
     <url-pattern>/DownLoadServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowFileServlet</servlet-name>
     <url-pattern>/ShowFileServlet</url-pattern>
-</servlet-mapping> 
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>SmartUpladServlet</servlet-name>
     <url-pattern>/SmartUpladServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>FileUpload</servlet-name>
     <url-pattern>/FileUpload</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowSysUsersServlet</servlet-name>
     <url-pattern>/ShowSysUsersServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditSysUsersServlet</servlet-name>
     <url-pattern>/EditSysUsersServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DoEditSysUsersServlet</servlet-name>
     <url-pattern>/DoEditSysUsersServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddSysUsersServlet</servlet-name>
     <url-pattern>/AddSysUsersServlet</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetAuthorityServlet</servlet-name>
     <url-pattern>/GetAuthorityServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOutAssistGetListServlet</servlet-name>
     <url-pattern>/GoOutAssistGetListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistGetSpecServlet</servlet-name>
     <url-pattern>/OutAssistGetSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistGetListServlet</servlet-name>
     <url-pattern>/OutAssistGetListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditOutAssistGetSpecServlet</servlet-name>
     <url-pattern>/EditOutAssistGetSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddOutAssistGetServlet</servlet-name>
     <url-pattern>/AddOutAssistGetServlet</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistComSpecServlet</servlet-name>
     <url-pattern>/OutAssistComSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOutAssistDetailListServlet</servlet-name>
     <url-pattern>/GoOutAssistDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistDetailServlet</servlet-name>
     <url-pattern>/OutAssistDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistDetailListServlet</servlet-name>
     <url-pattern>/OutAssistDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditOutAssistDetailServlet</servlet-name>
     <url-pattern>/EditOutAssistDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddOutAssistDetailServlet</servlet-name>
     <url-pattern>/AddOutAssistDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoQuotationAllDetailServlet</servlet-name>
     <url-pattern>/GoQuotationAllDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditOutAssistSpecServlet</servlet-name>
     <url-pattern>/EditOutAssistSpecServlet</url-pattern>
-</servlet-mapping> 
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistSpecServlet</servlet-name>
     <url-pattern>/OutAssistSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistListServlet</servlet-name>
     <url-pattern>/OutAssistListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddOutAssistServlet</servlet-name>
     <url-pattern>/AddOutAssistServlet</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>OutAssistComListServlet</servlet-name>
     <url-pattern>/OutAssistComListServlet</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EditOutAssistComSpecServlet</servlet-name>
     <url-pattern>/EditOutAssistComSpecServlet</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddOutAssistComServlet</servlet-name>
     <url-pattern>/AddOutAssistComServlet</url-pattern>
-</servlet-mapping>
- 
- 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCompanyTypeServlet</servlet-name>
     <url-pattern>/GetCompanyTypeServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CustomerItemSpecServlet</servlet-name>
     <url-pattern>/CustomerItemSpecServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoCustomerItemSpecServlet</servlet-name>
     <url-pattern>/GoCustomerItemSpecServlet</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetPriceUnitServlet</servlet-name>
     <url-pattern>/GetPriceUnitServlet</url-pattern>
-</servlet-mapping>
- <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CustomerItemDetailListServlet</servlet-name>
     <url-pattern>/CustomerItemDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoCustomerItemDetailServlet</servlet-name>
     <url-pattern>/GoCustomerItemDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddCustomerItemServlet</servlet-name>
     <url-pattern>/AddCustomerItemServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowOrderDetailSpecServlet</servlet-name>
     <url-pattern>/ShowOrderDetailSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOrderConfirmServlet</servlet-name>
     <url-pattern>/GoOrderConfirmServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderAllDetailListServlet</servlet-name>
     <url-pattern>/OrderAllDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOrderAllDetailServlet</servlet-name>
     <url-pattern>/GoOrderAllDetailServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetOrderHeadServlet</servlet-name>
     <url-pattern>/GetOrderHeadServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineHireSpecServlet</servlet-name>
     <url-pattern>/MachineHireSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineHireListServlet</servlet-name>
     <url-pattern>/MachineHireListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditMachineHireSpecServlet</servlet-name>
     <url-pattern>/EditMachineHireSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddMachineHireServlet</servlet-name>
     <url-pattern>/AddMachineHireServlet</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderConfirmServlet</servlet-name>
     <url-pattern>/OrderConfirmServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineDiscardSpecServlet</servlet-name>
     <url-pattern>/MachineDiscardSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineDiscardListServlet</servlet-name>
     <url-pattern>/MachineDiscardListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditMachineDiscardSpecServlet</servlet-name>
     <url-pattern>/EditMachineDiscardSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddMachineDiscardServlet</servlet-name>
     <url-pattern>/AddMachineDiscardServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineRepairSpecServlet</servlet-name>
     <url-pattern>/MachineRepairSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineRepairListServlet</servlet-name>
     <url-pattern>/MachineRepairListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditMachineRepairSpecServlet</servlet-name>
     <url-pattern>/EditMachineRepairSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddMachineRepairServlet</servlet-name>
     <url-pattern>/AddMachineRepairServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetMachStatusServlet</servlet-name>
     <url-pattern>/GetMachStatusServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetMachTypeServlet</servlet-name>
     <url-pattern>/GetMachTypeServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetDeptTreeServlet</servlet-name>
     <url-pattern>/GetDeptTreeServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditDeptSpecServlet</servlet-name>
     <url-pattern>/EditDeptSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DeptSpecServlet</servlet-name>
     <url-pattern>/DeptSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DeptListServlet</servlet-name>
     <url-pattern>/DeptListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddDeptServlet</servlet-name>
     <url-pattern>/AddDeptServlet</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoQuotationTotalServlet</servlet-name>
     <url-pattern>/GoQuotationTotalServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>QuotationTotalServlet</servlet-name>
     <url-pattern>/QuotationTotalServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CheckOrderDetailSpecServlet</servlet-name>
     <url-pattern>/CheckOrderDetailSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoCheckOrderDetailListServlet</servlet-name>
     <url-pattern>/GoCheckOrderDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOrderPayedDetailListServlet</servlet-name>
     <url-pattern>/GoOrderPayedDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderPayedDetailListServlet</servlet-name>
     <url-pattern>/OrderPayedDetailListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderPayedSpecServlet</servlet-name>
     <url-pattern>/OrderPayedSpecServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditOrderDetailSpecServlet</servlet-name>
     <url-pattern>/EditOrderDetailSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ChangeProductStatusServlet</servlet-name>
     <url-pattern>/ChangeProductStatusServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ChangeOrderStatusServlet</servlet-name>
     <url-pattern>/ChangeOrderStatusServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderAllStatusListServlet</servlet-name>
     <url-pattern>/OrderAllStatusListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderPayedListServlet</servlet-name>
     <url-pattern>/OrderPayedListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOrderPayedListServlet</servlet-name>
     <url-pattern>/GoOrderPayedListServlet</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoQuotationProductServlet</servlet-name>
     <url-pattern>/GoQuotationProductServlet</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowQuotationProductServlet</servlet-name>
     <url-pattern>/ShowQuotationProductServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>QuotationProductServlet</servlet-name>
     <url-pattern>/QuotationProductServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ItemSpecServlet</servlet-name>
     <url-pattern>/ItemSpecServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetOrderTreeServlet</servlet-name>
     <url-pattern>/GetOrderTreeServlet</url-pattern>
-</servlet-mapping>
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowPriceManHourServlet</servlet-name>
     <url-pattern>/ShowPriceManHourServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditPriceManHourServlet</servlet-name>
     <url-pattern>/EditPriceManHourServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DoEditPriceManHourServlet</servlet-name>
     <url-pattern>/DoEditPriceManHourServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddPriceManHourServlet</servlet-name>
     <url-pattern>/AddPriceManHourServlet</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineSpecServlet</servlet-name>
     <url-pattern>/MachineSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>MachineListServlet</servlet-name>
     <url-pattern>/MachineListServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditMachineSpecServlet</servlet-name>
     <url-pattern>/EditMachineSpecServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddMachineServ</servlet-name>
     <url-pattern>/AddMachineServ</url-pattern>
-</servlet-mapping>
-
-
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>AddItemServlet</servlet-name>
     <url-pattern>/AddItemServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetItemServlet</servlet-name>
     <url-pattern>/GetItemServlet</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetItemTypeServlet</servlet-name>
     <url-pattern>/GetItemTypeServlet</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoOrderDetailListServlet</servlet-name>
     <url-pattern>/GoOrderDetailListServlet</url-pattern>
   </servlet-mapping>
-<servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OrderSpecServlet</servlet-name>
     <url-pattern>/OrderSpecServlet</url-pattern>
   </servlet-mapping>
@@ -4779,9 +4467,7 @@
     <servlet-name>AddOrderDetailServlet</servlet-name>
     <url-pattern>/AddOrderDetailServlet</url-pattern>
   </servlet-mapping>
-
-
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DoEditCustomerDetailServlet</servlet-name>
     <url-pattern>/DoEditCustomerDetailServlet</url-pattern>
   </servlet-mapping>
@@ -4797,13 +4483,11 @@
     <servlet-name>AddCustomerServlet</servlet-name>
     <url-pattern>/AddCustomerServlet</url-pattern>
   </servlet-mapping>
-  
-  
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DoEditEmployeeDetailServlet</servlet-name>
     <url-pattern>/DoEditEmployeeDetailServlet</url-pattern>
   </servlet-mapping>
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>EditEmployeeDetailServlet</servlet-name>
     <url-pattern>/EditEmployeeDetailServlet</url-pattern>
   </servlet-mapping>
@@ -4811,47 +4495,34 @@
     <servlet-name>add_res</servlet-name>
     <url-pattern>/add_res</url-pattern>
   </servlet-mapping>
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ItemDetailServlet</servlet-name>
     <url-pattern>/ItemDetailServlet</url-pattern>
   </servlet-mapping>
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GoDispatchServlet</servlet-name>
     <url-pattern>/GoDispatchServlet</url-pattern>
   </servlet-mapping>
- 
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GojianceServlet</servlet-name>
     <url-pattern>/GojianceServlet</url-pattern>
   </servlet-mapping>
- 
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>TongjiDetailServlet</servlet-name>
     <url-pattern>/TongjiDetailServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>TongjiServlet</servlet-name>
     <url-pattern>/TongjiServlet</url-pattern>
   </servlet-mapping>
- 
   <servlet-mapping>
     <servlet-name>AddGT</servlet-name>
     <url-pattern>/GT/demo/AddGT</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>jianceServlet</servlet-name>
     <url-pattern>/jianceServlet</url-pattern>
   </servlet-mapping>
-  
-  <!-- 
-  <servlet-mapping>
-    <servlet-name>websocket</servlet-name>
-    <url-pattern>/websocket</url-pattern>
-  </servlet-mapping>
-   -->
-  
   <servlet-mapping>
     <servlet-name>aoDispatch_Delete</servlet-name>
     <url-pattern>/aoDispatch_Delete</url-pattern>
@@ -4892,7 +4563,6 @@
     <servlet-name>EditAOInfoServlet</servlet-name>
     <url-pattern>/EditAOInfoServlet</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>AddEmployeeServlet</servlet-name>
     <url-pattern>/AddEmployeeServlet</url-pattern>
@@ -4909,7 +4579,6 @@
     <servlet-name>EditEmployeeInfoServlet</servlet-name>
     <url-pattern>/EditEmployeeInfoServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>UpdateMachine</servlet-name>
     <url-pattern>/UpdateMachine</url-pattern>
@@ -5058,7 +4727,6 @@
     <servlet-name>FshBomSvlt</servlet-name>
     <url-pattern>/FshBomSvlt</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>ProcessFlowCard</servlet-name>
     <url-pattern>/ProcessFlowCard</url-pattern>
@@ -5227,7 +4895,7 @@
     <servlet-name>ToStateJudge2</servlet-name>
     <url-pattern>/ToStateJudge2</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>StockServlet</servlet-name>
     <url-pattern>/StockServlet</url-pattern>
   </servlet-mapping>
@@ -5439,7 +5107,6 @@
     <servlet-name>doEditLlSheetServlet</servlet-name>
     <url-pattern>/doEditLlSheetServlet</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>RmSheetIdServlet</servlet-name>
     <url-pattern>/RmSheetIdServlet</url-pattern>
@@ -5752,7 +5419,7 @@
     <servlet-name>doeditExamineApplyServlet</servlet-name>
     <url-pattern>/doeditExamineApplyServlet</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetOrderTreeServlet1</servlet-name>
     <url-pattern>/GetOrderTreeServlet1</url-pattern>
   </servlet-mapping>
@@ -5952,8 +5619,7 @@
     <servlet-name>OrderListServlet1</servlet-name>
     <url-pattern>/OrderListServlet1</url-pattern>
   </servlet-mapping>
-  <!-- 11-14 -->
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>doeditProductCheckinServlet</servlet-name>
     <url-pattern>/doeditProductCheckinServlet</url-pattern>
   </servlet-mapping>
@@ -5969,18 +5635,18 @@
     <servlet-name>doexamineDetailCheckinServlet</servlet-name>
     <url-pattern>/doexamineDetailCheckinServlet</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>getCheckinFormServlet</servlet-name>
     <url-pattern>/getCheckinFormServlet</url-pattern>
-  </servlet-mapping> 
-   <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ProductServlet</servlet-name>
     <url-pattern>/ProductServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>showProductCheckinServlet</servlet-name>
     <url-pattern>/showProductCheckinServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>showProductCheckinFormServlet</servlet-name>
     <url-pattern>/showProductCheckinFormServlet</url-pattern>
@@ -6016,8 +5682,8 @@
   <servlet-mapping>
     <servlet-name>PoDetailServlet</servlet-name>
     <url-pattern>/PoDetailServlet</url-pattern>
-  </servlet-mapping> 
-   <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowPrSheetid</servlet-name>
     <url-pattern>/ShowPrSheetid</url-pattern>
   </servlet-mapping>
@@ -6061,14 +5727,14 @@
     <servlet-name>ReceiptServlet</servlet-name>
     <url-pattern>/ReceiptServlet</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DrawingIdSearchServlet</servlet-name>
     <url-pattern>/DrawingIdSearchServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetIssueNumServlet</servlet-name>
     <url-pattern>/GetIssueNumServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>showOrderStatisticsServlet</servlet-name>
     <url-pattern>/showOrderStatisticsServlet</url-pattern>
@@ -6137,7 +5803,6 @@
     <servlet-name>saveCustomerPayServlet</servlet-name>
     <url-pattern>/saveCustomerPayServlet</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>ProductOutAssistSaveServlet</servlet-name>
     <url-pattern>/ProductOutAssistSaveServlet</url-pattern>
@@ -6258,14 +5923,14 @@
     <servlet-name>SelectedGanttSaveServlet</servlet-name>
     <url-pattern>/SelectedGanttSaveServlet</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>GetWarehouseItemServlet</servlet-name>
     <url-pattern>/GetWarehouseItemServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>addWarehouseItemServlet</servlet-name>
     <url-pattern>/addWarehouseItemServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DownLoadCraft</servlet-name>
     <url-pattern>/DownLoadCraft</url-pattern>
@@ -6369,7 +6034,7 @@
   <servlet-mapping>
     <servlet-name>DisFoOrderTree</servlet-name>
     <url-pattern>/DisFoOrderTree</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetSupplierPayTreeServlet</servlet-name>
     <url-pattern>/GetSupplierPayTreeServlet</url-pattern>
@@ -6425,7 +6090,7 @@
   <servlet-mapping>
     <servlet-name>LoadNewPrsheetId</servlet-name>
     <url-pattern>/LoadNewPrsheetId</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DoneFoProduct</servlet-name>
     <url-pattern>/DoneFoProduct</url-pattern>
@@ -6526,7 +6191,7 @@
     <servlet-name>LoadCostProducts</servlet-name>
     <url-pattern>/LoadCostProducts</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DiscardCheckEndTimeServlet</servlet-name>
     <url-pattern>/DiscardCheckEndTimeServlet</url-pattern>
   </servlet-mapping>
@@ -6537,7 +6202,7 @@
   <servlet-mapping>
     <servlet-name>DiscardSelectedGanttSaveServlet</servlet-name>
     <url-pattern>/DiscardSelectedGanttSaveServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PoStatusServlet</servlet-name>
     <url-pattern>/PoStatusServlet</url-pattern>
@@ -6597,7 +6262,7 @@
   <servlet-mapping>
     <servlet-name>ShowProductMatirialServlet</servlet-name>
     <url-pattern>/ShowProductMatirialServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCraftTreeServlet</servlet-name>
     <url-pattern>/GetCraftTreeServlet</url-pattern>
@@ -6649,7 +6314,7 @@
   <servlet-mapping>
     <servlet-name>WarehouseCountStatisticsServlet</servlet-name>
     <url-pattern>/WarehouseCountStatisticsServlet</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>OrderForDelete</servlet-name>
     <url-pattern>/OrderForDelete</url-pattern>
@@ -6737,7 +6402,7 @@
   <servlet-mapping>
     <servlet-name>AllOrderListServlet</servlet-name>
     <url-pattern>/AllOrderListServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SeeProduceDetail</servlet-name>
     <url-pattern>/SeeProduceDetail</url-pattern>
@@ -6797,13 +6462,12 @@
   <servlet-mapping>
     <servlet-name>SupplierPayStatisticsServlet</servlet-name>
     <url-pattern>/SupplierPayStatisticsServlet</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>deletePoApplyDetailServlet</servlet-name>
     <url-pattern>/deletePoApplyDetailServlet</url-pattern>
-</servlet-mapping>    
- 
-   <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>PrintItemServlet</servlet-name>
     <url-pattern>/PrintItemServlet</url-pattern>
   </servlet-mapping>
@@ -6847,7 +6511,7 @@
     <servlet-name>selectProductIdServlet</servlet-name>
     <url-pattern>/selectProductIdServlet</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ToPrintNotice</servlet-name>
     <url-pattern>/ToPrintNotice</url-pattern>
   </servlet-mapping>
@@ -6871,10 +6535,10 @@
     <servlet-name>StatisticsExcelServlet</servlet-name>
     <url-pattern>/StatisticsExcelServlet</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OutAssistMenuRemoveServlet</servlet-name>
     <url-pattern>/OutAssistMenuRemoveServlet</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ModifyOrderTreeServlet</servlet-name>
     <url-pattern>/ModifyOrderTreeServlet</url-pattern>
@@ -6898,8 +6562,8 @@
   <servlet-mapping>
     <servlet-name>empSumExcelOut</servlet-name>
     <url-pattern>/empSumExcelOut</url-pattern>
-  </servlet-mapping> 
-    <servlet-mapping>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>addCustomerPaymentServlet</servlet-name>
     <url-pattern>/addCustomerPaymentServlet</url-pattern>
   </servlet-mapping>
@@ -6915,7 +6579,7 @@
     <servlet-name>RemarkPurchase</servlet-name>
     <url-pattern>/RemarkPurchase</url-pattern>
   </servlet-mapping>
- <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ShowaddPoPaymentServlet</servlet-name>
     <url-pattern>/ShowaddPoPaymentServlet</url-pattern>
   </servlet-mapping>
@@ -7031,13 +6695,34 @@
     <servlet-name>dataFeedback</servlet-name>
     <url-pattern>/dataFeedback</url-pattern>
   </servlet-mapping>
-   <!-- 
-  <resource-ref>
-    <description>cfmes DataSource</description>
-    <res-ref-name>jdbc/cfmes</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-   -->   
+  <servlet>
+    <description></description>
+    <display-name>dataFeedback01</display-name>
+    <servlet-name>dataFeedback01</servlet-name>
+    <servlet-class>DataCollection.dataFeedback01</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dataFeedback01</servlet-name>
+    <url-pattern>/dataFeedback01</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>hhhh</display-name>
+    <servlet-name>hhhh</servlet-name>
+    <servlet-class>DataCollection.hhhh</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hhhh</servlet-name>
+    <url-pattern>/hhhh</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>data download de jsp</description>
+    <display-name>dataDownload</display-name>
+    <servlet-name>dataDownload</servlet-name>
+    <servlet-class>DataCollection.dataDownload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dataDownload</servlet-name>
+    <url-pattern>/dataDownload</url-pattern>
+  </servlet-mapping>
 </web-app>
-
