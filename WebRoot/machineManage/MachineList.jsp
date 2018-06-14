@@ -47,8 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div field="machModel" width="80" headerAlign="center">设备型号</div>
             <div field="machStandard" width="80" headerAlign="center">设备品牌</div>
             <div field="machPrice" width="60" headerAlign="center">设备价格</div>
-            <!-- <div field="hourPercent" width="80" headerAlign="center">工时百分比</div>
-            <div field="countPercent" width="80" headerAlign="center">计件百分比</div> -->
+             <div field="hourPercent" width="80" headerAlign="center">工时百分比</div>
+            <div field="countPercent" width="80" headerAlign="center">计件百分比</div> 
             <div field="outDate" width="100" headerAlign="center" dateFormat="yyyy-MM-dd">出厂日期</div>
             <div field="place" width="100" headerAlign="center">放置地点</div>
             <div field="isKeyMach" width="80" headerAlign="center" renderer="onGenderRenderer">是否关键设备</div>
