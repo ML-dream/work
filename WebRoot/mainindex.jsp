@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="css/demo.css" rel="stylesheet" type="text/css" />
 	<script src="scripts/boot.js" type="text/javascript"></script>
 	<link href="scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
-
+	
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -47,50 +47,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="background-color: #EBEFF5;">
 
 		<div id="layout1" class="mini-layout" style="width: 100%; height: 100%;">
-			<div class="header" region="north"  showSplit="false" showHeader="false" style="background-color: #D9E7F8">
-				
-				<h1 style="margin: 0; padding: 10px; cursor: default; font-family: 'Trebuchet MS', Arial, sans-serif;text-align: center;overflow: hidden;">
-					企业生产管理与制造执行系统
-				</h1>
-				
-				<div style="position:absolute;top:18px;right:10px;">   
-		            <a class="mini-button mini-button-iconTop" iconCls="icon-node" onclick="toMainIndex()"  plain="true" >首页</a> 
-		            <a class="mini-button mini-button-iconTop" iconCls="icon-edit"  href="EditSysUsersServlet?para=0" plain="true" >修改密码</a>          
-		            <a class="mini-button mini-button-iconTop" iconCls="icon-remove" onclick="" href="ToLogOut" plain="true" >注销</a><!-- onlick 没什么用 -->
-                    <a class="mini-button mini-button-iconTop" iconCls="icon-remove" onclick="ToStep" href="" plain="true" >跳转</a>       
-        		</div>
-        		
-        		<ul id="menu1" class="mini-menubar" style="width:75%;height=30;margin-left:1%;" borderStyle="border:0"
-		            url="LoadMainMenu" onitemclick="onItemClick" imgPath="imgs/"
-		            textField="text" idField="id" parentField="pid"  
-		        >
-		    	</ul>                <!--  总热言之  该处和下面的lefttree都是事实现 的是 分别展开相应的选项 -->
-        		
-			</div>
 			
-			<div title="south" region="south" showSplit="false"
-				showHeader="false" height="30">
-				<div style="line-height: 28px; text-align: center; cursor: default">
-					Copyright © 南京航空航天大学版权所有
-				</div>
+			
+			<div showHeader="false" region="south" width="500" maxWidth="500"  showHeader="true" title="目录"
+				minWidth="100">
+				<iframe src="deptManage/liuchengtu.jsp" width="800px" height="500px" scrolling="no" frameborder="0"> </iframe>
 			</div>
 			
 			<div showHeader="false" region="west" width="180" maxWidth="250"  showHeader="true" title="目录"
 				minWidth="100">
-				<!--OutlookMenu-->
-				<div id="leftTree" class="mini-outlookmenu" url="LoadMainMenu"
-					onitemclick="onItemSelect" idField="id" parentField="pid" imgPath="imgs/"
-					textField="text" borderStyle="border:0">
-				</div>
+				<iframe src="orderManage/AddOrderDetailMain.jsp" width="800px" height="500px" scrolling="no" frameborder="0"> </iframe>
 			</div>
 			
-			<!-- 下面这个是页面中间的那个页面 -->
+			
+			
 			<div showCollapseButton="false" style="border: 0;">
 			<!--Tabs-->
 			<div id="mainTabs" class="mini-tabs" activeIndex="0"
 				style="width: 100%; height: 100%;" plain="true"
 				onactivechanged="onTabsActiveChanged">
-				<div title="首页" url="waitDoPage.jsp">
+				<div title="设备信息" url="machineManage/MachineList.jsp"> 
+				<!-- <iframe src="deptManage/liuchengtu.jsp" width="800px" height="500px" scrolling="no" frameborder="0"> </iframe> -->
 				</div>
 			</div>
 		</div>

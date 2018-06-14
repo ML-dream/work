@@ -53,7 +53,11 @@ public class ShowCustomerInfoServlet extends HttpServlet {
 	    "select D.* from (SELECT ROWNUM ROW_NUM, C.* from (select  A.*,B.NAME typename from CUSTOMER A join companytype B on A.type=b.id " +
 	    "WHERE COMPANYNAME LIKE '%"+customname+"%'and istogether='Y' order by companyid) C) D WHERE ROW_NUM" +
 	    		" BETWEEN "+(countPerPage*(pageNo-1)+1)+" AND "+(countPerPage*pageNo)+"";
-	     
+	  //此处是繁琐的，其实只需要两层就好了！！按照where between进行rownum排序进行排序
+	   //
+	    /*  "SELECT ROWNUM ROW_NUM, C.* from (select  A.*,B.NAME typename from CUSTOMER A join companytype B on A.type=b.id " +
+	    "WHERE COMPANYNAME LIKE '%"+customname+"%'and istogether='Y' order by companyid) C WHERE ROW_NUM" +
+	    		" BETWEEN "+(countPerPage*(pageNo-1)+1)+" AND "+(countPerPage*pageNo)+"";*/
 	    List<Customer> customerList = new ArrayList<Customer>();
 	    try {
 			customerList = Sqlhelper.exeQueryList(CustomerSql, null, Customer.class);  

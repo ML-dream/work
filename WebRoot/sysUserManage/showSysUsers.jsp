@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <input type="button" value="查找" onclick="search()"/> 
   -->
   <div>
-  	名称  <input id="username" name="username" class="mini-textbox" onenter="Search()"/><span><%=message%></span>
+  	名称  <input id="username" name="username" class="mini-textbox" onenter="Search()"/><%-- <span><%=message%></span> --%>
   	<a class="mini-button" plain="fasle" onclick="Search()">查询</a>
   	
   	</div>

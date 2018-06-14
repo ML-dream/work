@@ -81,7 +81,7 @@ public class ActionServlet {
 //    	     "left join item B on B.ITEM_ID=A.PRODUCT_ID and B.FITEM_ID=A.FPRODUCT_ID " +
     	     "left join itemtype C on C.item_typeid=B.item_typeid  " +
              "left join fo_detail D on D.product_id=A.product_id and D.issue_num=A.issue_num "+
-    	     "where ORDER_ID=? and A.PRODUCT_ID=? and FPRODUCT_ID=?  and D.isinuse='1' and a.issue_num="+issueNum;
+    	     "where ORDER_ID=? and A.PRODUCT_ID=? and FPRODUCT_ID=?  ";//and D.isinuse='1' and a.issue_num="+issueNum
 		String [] params = {orderId,productId,FProductId};
 		
 		if(foType.equals("1")){
@@ -294,6 +294,9 @@ public class ActionServlet {
 			    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 			    String createTime = df.format(new Date());
 			    String changeTime = df.format(new Date());
+			    
+			    //String machineTime01 =ChineseCode.toUTF8(requestValueMap.get("machineTime01").trim())+ requestValueMap.get("machineTime0101").trim();
+			    
 //			    RequestCloneable reqCloneable = new  RequestCloneable(request);
 //			    HttpServletRequest req = null;
 //				try {
@@ -327,13 +330,13 @@ public class ActionServlet {
 			    
 			    System.out.println(foDetail.getCraftPaper());
 				String sql = "insert into fo_detail " +
-						"(foId,FO_NO,FO_OPNAME,OPER_TIME,RATED_TIME,PLAN_TIME," +
+						"(fo_id,foId,FO_NO,FO_OPNAME,OPER_TIME,RATED_TIME,PLAN_TIME," +
 						"OPER_AIDTIME,FO_OPCONTENT,INSP_TIME,WCID,EQUIPTYPE," +
 						"EQUIPCODE,IS_KEY,IS_INSP,IS_ARMINSP,IS_CERTOP," +
 						"IS_CO,product_type,product_id,issue_num,workBranch," +
 						"createPerson,createTime,changePerson,changeTime,processissue_num,craftpaper)" +
 						"values" +
-						"(?,?,?,?,?,?," +
+						"(?,?,?,?,?,?,?," +
 						"?,?,?,?,?," +
 						"?,?,?,?,?," +
 						"?,?,?,?,?," +
@@ -351,29 +354,55 @@ public class ActionServlet {
 				}else{
 					fo= fono+"";
 				}
-				String[] params = {foDetail.getFoId(),fo,foDetail.getFoOpName(),foDetail.getOperTime()+"",foDetail.getRatedTime()+"",foDetail.getPlanTime()+"",
+				String foIdId=foDetail.getProductId()+fo;//这个代表工序唯一的id，对应表中的FO_id,注意不要和里面的foid混淆，插入的原因是为了和machineinfo_time表格形成对应！
+				
+				String[] params = {foIdId,foDetail.getFoId(),fo,foDetail.getFoOpName(),foDetail.getOperTime()+"",foDetail.getRatedTime()+"",foDetail.getPlanTime()+"",
 						foDetail.getOperAidTime()+"",foDetail.getFoOpcontent(),foDetail.getInspTime()+"",foDetail.getWCID(),foDetail.getEquipType(),
 						foDetail.getEquipCode(),foDetail.getIsKey(),foDetail.getIsInsp(),foDetail.getIsArmInsp(),foDetail.getIsCerTop(),
 						foDetail.getIsCo(),foDetail.getProductType(),foDetail.getProductId(),foDetail.getIssueNum(),foDetail.getWorkBranchId(),
 						createPerson,createTime,changePerson,changeTime,processissuenum,foDetail.getCraftPaper()};
-				System.out.println("sql="+sql);
+	
+	/**************************************************************开始插入设备时间等具体信息**************************************************************************/
+				String[] machineParams= {foDetail.getOrderId(),foIdId,foDetail.getEquipCode(),foDetail.getMachineName(),foDetail.getMachineTime01()+foDetail.getMachineTime0101(),foDetail.getEquipCode()+foDetail.getMachineTime01()+foDetail.getMachineTime0101()};
 				
+				String machineInfoTime_Sql = "insert into machineinfo_time " +
+						"(orderId,fo_id,machineId,machineName,machineTime,MACHINEID_MACHINETIME)" +
+						"values" +
+						"(?,?," +
+						"?,?," +
+						"?,?)";
+				
+				
+				
+				System.out.println("sql="+sql);
+				System.out.println("machineInfoTime_Sql="+machineInfoTime_Sql);
 //				String ProductStatusSql = "update order_detail set product_status=? " +
 //						"where order_id=? and product_id=? and issue_num=? and drawingId=? ";
 //				String[] params2 = {ProductStatus.FODOING+"",foDetail.getOrderId(),foDetail.getProductId(),foDetail.getIssueNum(),foDetail.getDrawingId()};
 				
+				String result = "操作成功";
+				String json = "";
+				
+				
 				try {
 					Sqlhelper.executeUpdate(sql, params);
 //					Sqlhelper.executeUpdate(ProductStatusSql, params2);
-					String json = "{\"result\":\"操作成功!\"}";
-					response.setCharacterEncoding("UTF-8");
-					response.getWriter().append(json).flush();
+					
 				} catch (Exception e) {
-					String json = "{\"result\":\"操作失败!\"}";
-					response.setCharacterEncoding("UTF-8");
-					response.getWriter().append(json).flush();
+					result = "操作失败";
 					e.printStackTrace();
 				}
+				try {
+					Sqlhelper.executeUpdate(machineInfoTime_Sql, machineParams);
+					
+				} catch (Exception e) {
+					result = "操作失败";
+					e.printStackTrace();
+				}
+				
+				 json = "{\"result\":\"操作成功!\"}";
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().append(json).flush();
 			}
 			    
 	public void goaofoselect(HttpServletRequest request, HttpServletResponse response,String pathTo)
@@ -2721,8 +2750,6 @@ public class ActionServlet {
 			cut = cut.substring(0,cut.length()-1);
 			aoDetail.setCutName(cut);
 		}
-	
-	
 	
 		if (!StringUtil.isNullOrEmpty(aoDetail.getAccessory())) {
 			String[] strArray = aoDetail.getAccessory().split(",");

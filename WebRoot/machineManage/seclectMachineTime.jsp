@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <title>选择客户</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-     
+    
 	<link href="<%=path %>/scripts/miniui/themes/default/miniui.css" rel="stylesheet" type="txt/css"></link>
 	<link href="<%=path %>/scripts/miniui/themes/icons.css" rel="stylesheet" type="txt/css"></link>
 	
@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div type="indexcolumn" ></div>
                 <div field="machineId" width="100" headerAlign="center">设备编号</div>
 	            <div field="machineName" width="70" headerAlign="center">设备名称 </div>
-	            <div field="machineSpec" width="100" headerAlign="center">设备规格</div>
-	            <div field="status" width="100" headerAlign="center">状态</div>
-	            <div field="power" width="100" headerAlign="center">功率</div>
-            	<div field="machtype" width="100" headerAlign="center">设备类别</div>  
-            	<div field="machineModel" width="70" headerAlign="center">设备型号</div>    
-            	<div field="workRange" width="70" headerAlign="center">加工范围</div>          
+	            <div field="machineTime" width="100" headerAlign="center">预约时间</div>
+	            <div field="orderId" width="100" headerAlign="center">订单号码</div>
+	            <div field="foId" width="100" headerAlign="center">工序编号</div>
+            	<div field="deptId" width="100" headerAlign="center">车间</div>  
+            	<div field="connector" width="70" headerAlign="center">联系人</div>    
+            	<!-- <div field="machineIdMachineTime" width="70" headerAlign="center">加工范围</div>    -->       
             </div>
         </div>
     
@@ -64,9 +64,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var grid = mini.get("grid1");
     //动态设置URL
     //grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
-    grid.setUrl("GetMachineServlet");
+    grid.setUrl("seclectMachineTime");
     //也可以动态设置列 grid.setColumns([]);
-    grid.load();
+    /* grid.load(); */
+    
+    function SetData(data) {
+        //跨页面传递的数据对象，克隆后才可以安全使用
+        data = mini.clone(data);
+      /*   alert(data.action); */
+        grid.load({equipCode:data.action}); 
+        
+        
+        //if (data.action == "edit") {
+            //alert(data.action);
+         /*  $("#tblCode").val(data.tblCode);
+          $("#tblName").val(data.tblName);
+          $("#sysCode").val(data.sysCode);
+          grid.load({tblCode:data.tblCode}); */
+        //}
+    }
     function GetData() {
         var row = grid.getSelected();
         return row;

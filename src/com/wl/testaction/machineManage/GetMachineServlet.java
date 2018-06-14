@@ -22,7 +22,7 @@ public class GetMachineServlet extends HttpServlet {
 		String statusFrom = StringUtil.isNullOrEmpty(request.getParameter("statusFrom"))?MachineStatus.INUSE+"":request.getParameter("statusFrom");
 		String statusTo = StringUtil.isNullOrEmpty(request.getParameter("statusTo"))?MachineStatus.INUSE+"":request.getParameter("statusTo");
 	    String sql= "select MACHINEID,MACHINENAME,MACHINESPEC,STATUS,POWER,WORKRANGE,MACHTYPE,MACHMODEL from machinfo " +
-	    		"where status>=? and status<=?";
+	    		"where status=? and status=?";
 	    String[] params = {statusFrom,statusTo};
 	    List<Machine> resultList = new ArrayList<Machine>();
 	    try {

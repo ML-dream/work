@@ -80,9 +80,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!--    				<c:if test="${proPlanDone=='1'}">
     					<a class="mini-button" iconCls="icon-node" plain="false" onclick="listProPlan();" style="margin-left:40px;">查看工序计划</a>
     				</c:if>
-  -->
+  --><!--此处的生成工序计划没有什么用，因此我将其删除掉了  -->
     				<c:if test="${proPlanDone!='1'}">
-    					<a class="mini-button" iconCls="icon-date" plain="false" onclick="addProPlan();" style="margin-left:40px;">生成工序计划</a>
+    					<a class="mini-hidden" iconCls="icon-date" plain="false" onclick="addProPlan();" style="margin-left:40px;">生成工序计划</a><!--此处我隐藏一起来，因为没有用处，只是和生成零件计划一样的额  -->
     				</c:if>
     			</c:if>
     			<c:if test="${isDone!='1'}">
@@ -218,7 +218,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	params = {'data':data}; 			
     	var url = 'PartPlanBaseServlet?meth=GoPartGT&pathTo=partProGT';
     			jQuery.post(url, params, function(data){
-      window.location.href = 'partPlanManage/partProGT.jsp';},'json');
+     },'json');
+    			 window.location.href = 'partPlanManage/partProGT.jsp';
  //   	window.location.href = "PartPlanBaseServlet?meth=GoPartGT&pathTo=partProGT";   
    	}
        

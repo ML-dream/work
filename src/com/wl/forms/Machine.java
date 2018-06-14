@@ -12,6 +12,12 @@ import java.util.Date;
  * @author Flair
  */
 public class Machine {
+	private String orderId;
+	private String foId;
+	private String connector;
+	private String machineTime;
+	private String machineIdMachineTime;
+	
 	private String machineId;		//设备编号
 	private String machineName;		//设备名称
 	private String machineSpec;		//设备规格
@@ -57,6 +63,36 @@ public class Machine {
 	private double hourPercent;         //公时百分比
 	private double countPercent;        //计件百分比
 	
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	public String getFoId() {
+		return foId;
+	}
+	public void setFoId(String foId) {
+		this.foId = foId;
+	}
+	public String getConnector() {
+		return connector;
+	}
+	public void setConnector(String connector) {
+		this.connector = connector;
+	}
+	public String getMachineTime() {
+		return machineTime;
+	}
+	public void setMachineTime(String machineTime) {
+		this.machineTime = machineTime;
+	}
+	public String getMachineIdMachineTime() {
+		return machineIdMachineTime;
+	}
+	public void setMachineIdMachineTime(String machineIdMachineTime) {
+		this.machineIdMachineTime = machineIdMachineTime;
+	}
 	public double getHourPercent() {
 		return hourPercent;
 	}

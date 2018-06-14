@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <body>
  
   </br>
-  	<h1 align="center">企业生产管理与制造执行系统(纳联)s</h1>
+  	<!-- <h1 align="center">LAB_MES系统</h1> -->
    	</br>
 	<div id="tablediv">
    	 <div id="datagrid1" class="mini-datagrid" style="width:580px;height:360px;" 
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <div field="link" width="60" headerAlign="center" allowSort="false" visible= "false">链接
             </div> 
                  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:400px">ddddddd</div>
+    
         </div>
      </div>
    </div>   

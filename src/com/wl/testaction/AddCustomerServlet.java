@@ -25,32 +25,34 @@ public class AddCustomerServlet extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		String companyId = ChineseCode.toUTF8(request.getParameter("companyId").trim());
-	    String companyName = ChineseCode.toUTF8(request.getParameter("companyName").trim());
-	    String type = ChineseCode.toUTF8(request.getParameter("type").trim());
+		
+		
+		String companyId = request.getParameter("companyId").trim();
+	    String companyName =request.getParameter("companyName").trim();
+	    String type = request.getParameter("type").trim();
 	    
-	    String foundingTime = ChineseCode.toUTF8(request.getParameter("foundingTime").trim());
-	    String header = ChineseCode.toUTF8(request.getParameter("header").trim());
-	    String employeeNum = ChineseCode.toUTF8(request.getParameter("employeeNum").trim());
+	    String foundingTime = request.getParameter("foundingTime").trim();
+	    String header = request.getParameter("header").trim();
+	    String employeeNum = request.getParameter("employeeNum").trim();
 	    
-	    String address = ChineseCode.toUTF8(request.getParameter("address").trim());
-	    String postCode = ChineseCode.toUTF8(request.getParameter("postCode").trim());
-	    String telephone = ChineseCode.toUTF8(request.getParameter("telephone").trim());
+	    String address = request.getParameter("address").trim();
+	    String postCode = request.getParameter("postCode").trim();
+	    String telephone = request.getParameter("telephone").trim();
 	    
-	    String webAddress = ChineseCode.toUTF8(request.getParameter("webAddress"));
-	    String business = ChineseCode.toUTF8(request.getParameter("business"));
-	    String advise = ChineseCode.toUTF8(request.getParameter("advise"));
-	    String connector = ChineseCode.toUTF8(request.getParameter("connector"));
-	    String connectorTel = ChineseCode.toUTF8(request.getParameter("connectorTel"));
+	    String webAddress = request.getParameter("webAddress");
+	    String business = request.getParameter("business");
+	    String advise = request.getParameter("advise");
+	    String connector = request.getParameter("connector");
+	    String connectorTel = request.getParameter("connectorTel");
 	    
-	    String connector2 = ChineseCode.toUTF8(request.getParameter("connector2"));
-	    String connector2Tel = ChineseCode.toUTF8(request.getParameter("connector2Tel"));
+	    String connector2 = request.getParameter("connector2");
+	    String connector2Tel = request.getParameter("connector2Tel");
 	    
-	    String connector3 = ChineseCode.toUTF8(request.getParameter("connector3"));
-	    String connector3Tel = ChineseCode.toUTF8(request.getParameter("connector3Tel"));
+	    String connector3 = request.getParameter("connector3");
+	    String connector3Tel = request.getParameter("connector3Tel");
 	    
-	    String connector4 = ChineseCode.toUTF8(request.getParameter("connector4"));
-	    String connector4Tel = ChineseCode.toUTF8(request.getParameter("connector4Tel"));
+	    String connector4 = request.getParameter("connector4");
+	    String connector4Tel =request.getParameter("connector4Tel");
 	    
 		String  addCustomerSql = "insert into customer " +
 				"(COMPANYID,COMPANYNAME,FOUNDEINGTIME,EMPLLOYEENUM,TYPE," +

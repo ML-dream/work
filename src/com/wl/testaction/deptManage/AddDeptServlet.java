@@ -27,15 +27,16 @@ public class AddDeptServlet extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		String deptId= ChineseCode.toUTF8(request.getParameter("deptId").trim());
-		String headStaffId= ChineseCode.toUTF8(request.getParameter("headStaffId"));
-		String temp = request.getParameter("FDeptId").trim();
-		String FDeptId= ChineseCode.toUTF8(StringUtil.isNullOrEmpty(request.getParameter("FDeptId"))?"0":request.getParameter("FDeptId").trim());
-		String deptLevel= ChineseCode.toUTF8(request.getParameter("deptLevel").trim());
-		String deptName= ChineseCode.toUTF8(request.getParameter("deptName").trim());
-		String isKey= ChineseCode.toUTF8(request.getParameter("isKey").trim());
 		
-	    String memo = ChineseCode.toUTF8(request.getParameter("memo"));
+		String deptId= ChineseCode.toUTF8(request.getParameter("deptId").trim());
+		String headStaffId= request.getParameter("headStaffId");
+		request.getParameter("FDeptId").trim();
+		String FDeptId= StringUtil.isNullOrEmpty(request.getParameter("FDeptId"))?"0":request.getParameter("FDeptId").trim();
+		String deptLevel= request.getParameter("deptLevel").trim();
+		String deptName= request.getParameter("deptName").trim();
+		String isKey= request.getParameter("isKey").trim();
+		
+	    String memo = request.getParameter("memo");
 	    
 	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 	    String createTime = df.format(new Date());

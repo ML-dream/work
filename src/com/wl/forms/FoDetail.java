@@ -18,6 +18,9 @@ public class FoDetail  implements Serializable,Comparable{
 
 	private static final long serialVersionUID = 2833801796461068481L;
 	
+	private String machineTime01;
+	private String machineTime0101;
+	private String machineName;
 	private String foId;
 	private String orderId;
 	private String productType;
@@ -82,6 +85,26 @@ public class FoDetail  implements Serializable,Comparable{
 	private String drawingId;
 	private String isWaiXie;
 	
+	
+	
+	public String getMachineTime01() {
+		return machineTime01;
+	}
+	public void setMachineTime01(String machineTime01) {
+		this.machineTime01 = machineTime01;
+	}
+	public String getMachineTime0101() {
+		return machineTime0101;
+	}
+	public void setMachineTime0101(String machineTime0101) {
+		this.machineTime0101 = machineTime0101;
+	}
+	public String getMachineName() {
+		return machineName;
+	}
+	public void setMachineName(String machineName) {
+		this.machineName = machineName;
+	}
 	public String getIsWaiXie(){
 		return isWaiXie;
 	}

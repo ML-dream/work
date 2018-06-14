@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
 		    </div>
 		    <div title="center" region="center" bodyStyle="overflow:hidden;">
-		        <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" src="Stock/showStock.jsp" border="0"></iframe>
+		        <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" src="machineManage/showMachineInfo.jsp" border="0"></iframe>
 		    </div>
 		</div>
 		<script>
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        		
 		       // }	
 	        	if(node.level==1){			//库房层
-       		iframe.src = "GetStockListServlet?warehouse_id="+node.id;
+       		 iframe.src = "GetMachineTreeNodeInfo?machineId="+node.id;
 		        }
 	        	if(node.level==2){			//零件层
 	        		//iframe.src = "GoQuotationProductServlet?orderId="+orderId+"&productId="+node.id+"&itemId=";

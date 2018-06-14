@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        	}
        	
        	
-       	function doPartsPlan(e){
+       	function doPartsPlan(){
        		var rows = grid.getSelecteds();
        	
    			var hour = mini.get("hour").getValue();

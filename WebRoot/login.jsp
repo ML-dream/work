@@ -59,12 +59,13 @@
       </style>	
   </head>
   <body style="text-align:center;padding-top:0px;" background="images/bg14.jpg"  bgcolor="#d9d9d9"></br>
-       <div style="text-align:center">&nbsp;&nbsp;&nbsp;
+      <!--  <div style="text-align:center">&nbsp;&nbsp;&nbsp;
              <img src="images/logo.JPG" width="220px" hight="100px" alt="biaozhi"/>
-      </div> 
+      </div>  -->
   <form style="text-align:center" name="form1" method="post" action="LoginHandler">
       <div id="denglu" >
-      &nbsp;&nbsp;&nbsp;纳&nbsp;&nbsp;联
+     	L&nbsp;A&nbsp;B&nbsp;_&nbsp;M&nbsp;E&nbsp;S&nbsp;系&nbsp;统
+      <!--  &nbsp;&nbsp;&nbsp;生&nbsp;&nbsp;产&nbsp;&nbsp;管&nbsp;&nbsp;理&nbsp;&nbsp;与&nbsp;&nbsp;制&nbsp;&nbsp;造&nbsp;&nbsp;执&nbsp;&nbsp;行&nbsp;&nbsp;系&nbsp;&nbsp;统  -->
       </div></br></br></br>
       <div>用户名<input id="user" type="text" name="username"  maxlength="20" 
 			   autocomplete=on value=""  onblur="javascript:return(checkform());">
@@ -75,7 +76,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span>
 <input type="submit" name="Submit" value="确认登陆"  id="log">
-</span>&nbsp;&nbsp;
+<!-- </span>&nbsp;&nbsp;
 <span><input type="button" name="button" value="更改密码"  
 			onclick="window.location.href='modify.jsp';" id="modify"></span>
 			<a herf="window.location.href='modify.jsp">
@@ -86,7 +87,7 @@
     <a href="www.baidu.com">更改密碼</a>
     <a href="modify.jsp">链接</a>
     <a href="window.location.href='modify.jsp';">链接</a>
-    <a href="javascript:window.location.href=modify.jsp"> 点击这里 </a>
+    <a href="javascript:window.location.href=modify.jsp"> 点击这里 </a> -->
     <script type="text/javascript">
        function  back(){
           winodw.location.href="modify.jsp";

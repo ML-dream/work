@@ -77,7 +77,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </tr> 
 			     <tr>
 			     	<th>设备编号</th>
-			    	<td><input id="equipCode" name="equipCode" class="mini-buttonedit" width="100%" onbuttonclick="onButtonEditMachine" allowInput="false"/></td>
+			    	<td><input id="equipCode" name="equipCode" class="mini-buttonedit" width="66%" onbuttonclick="onButtonEditMachine" allowInput="false"/>
+			    	<a class="mini-button" iconCls="icon-search" width="30%" plain="false"  onclick="search()">预约查询</a>
+			    	</td>
 			    	<th>制造工段</th>
 			    	<td><select id="WCID" name="WCID" style="width:130px;"><option>---请输入---</option>
 				    		<option value="1" selected>---暂无数据---</option>
@@ -87,10 +89,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input id="equipType"  name="equipType" class="mini-textbox"  width="100%"/></td>
     			</tr>                    
 			    <tr> 
-			    	<th>关键工序</th>
-			        <td><input id="isKey"  name="isKey" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
-    					url="data/trueOrFalse.txt" value="0"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
-            		</td>
+			    	<th>预约时间一</th>
+		            <td style="width:25%;">
+		            <input id="machineTime01" name ="machineTime01" class="mini-datepicker" width="66%" dateFormat="yyyy-MM-dd" allowInput="true" required="true" showTodayButton="true" onvaluechanged="onChange()" ondrawdate="onDrawDate" />
+					<input id="machineTime0101"  name="machineTime0101" class="mini-combobox" style="width:30%;" textField="text" valueField="id" emptyText="请选择..."
+		    			url="data/machineTime.txt"   required="true" allowInput="false" onvaluechanged="onChange()" showNullItem="true" nullItemText="请选择..."/> 
+		       	    </td>
 			    	<th>是否军检</th>
 			        <td><input id="isArmInsp"  name="isArmInsp" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
     					url="data/trueOrFalse.txt" value="0" allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
@@ -101,17 +105,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</td>
             	</tr>
             	<tr>
+            		
+					<th>关键工序</th>
+			        <td><input id="isKey"  name="isKey" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
+    					url="data/trueOrFalse.txt" value="0"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
+            		</td>
             		<th>上传工艺文件</th>
 			        <td align="left"><input type="file" name="craftPaper"/></td>
 					<td><a class="mini-button" iconCls="icon-save" plain="false"  onclick="toservlet();">保存</a>
 						<a class="mini-button" iconCls="icon-undo" plain="false"  onclick="javascript:window.history.back(-1);">返回</a>
 					</td>
-					<input type="hidden" id="productType" name = "productType" value="${productType}"/>
+					
+		       	  <!--   <td><label for="machineTime02$text">预约时间二</label></td>
+		            <td style="width:25%;">
+		            <input id="machineTime02" name ="mahineTime02" class="mini-datepicker" width="66%" dateFormat="yyyy-MM-dd" allowInput="true" showTodayButton="true"   ondrawdate="onDrawDate"/>
+		          	<input id="machineTime0202"  name="machineTime0202" class="mini-combobox" style="width:30%;" textField="machineTime0202" valueField="machineTime0202" emptyText="请选择..."
+		    				url="GetOrderHeadServlet" value="NL-XS"  required="true" allowInput="false" showNullItem="true" nullItemText="请选择..."/>   
+		           </td> -->
+							<input type="hidden" id="productType" name = "productType" value="${productType}"/>
 					<input type = "hidden" name = "productId" value="${productId}"/>
 					<input type = "hidden" name = "issueNum" value="${issueNum}"/>
 					<input type = "hidden" name = "orderId" value="${orderId}"/>
 					<input type = "hidden" name = "foId" value="${foId}"/>
 					<input type = "hidden" name = "drawingId" value="${drawingId}"/>
+					<input type="hidden" id="machineName" name = "machineName" value=""/>
 					
 				</tr>
 			</table>
@@ -142,6 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
 	mini.parse();
    	var grid = mini.get("grid1");
+   	var machineName;
     grid.load();
     
     setFoNo();
@@ -172,6 +190,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
     }
     
+    function search(e) {
+        var equipCode = $("input[name='equipCode']").val();
+        var btnEdit=this;
+        if(equipCode=="") {
+            alert("请先选择设备…………");
+        }else{
+        	mini.open({
+                url: "machineManage/seclectMachineTime.jsp",
+                title:machineName,
+                width: 650,
+                height: 380,
+                //父窗口向子窗口传值；                    
+                onload: function () {
+                    var iframe = this.getIFrameEl();
+
+                    var data = { action:equipCode};
+                    iframe.contentWindow.SetData(data);
+                    
+                },
+                ondestroy: function (action) {
+                    if (action == "ok") {
+                        var iframe = this.getIFrameEl();
+                        var data = iframe.contentWindow.GetData();
+                        data = mini.clone(data);    //必须
+                        if (data) {
+                            btnEdit.setValue(data.machineId);
+                            btnEdit.setText(data.machineName);
+                           
+                            
+                        }
+                    }
+                }
+            });
+        }
+        
+    }
+    
+    function onDrawDate(e) {
+		   var date = e.date;
+		   var d = new Date();
+		   if (date.getTime() < (d.getTime()-86400000)) //getIME得到的是毫秒数，所以减去这么大的数字
+		   {
+		     e.allowSelect = false;
+		   }
+		 }
+		
+		
+		
+		
+		 function onChange() {
+			var x= mini.get("machineTime01").getValue();
+			var equipCode= mini.get("equipCode").getValue();
+			var x = new Date(x);  
+			var year = x.getFullYear();
+			var month=x.getMonth()+1;
+			var date = x.getDate();  			
+			var machineTime0101= mini.get("machineTime0101").getValue();
+			/* x=x.getFullYear() + '-' + month+ '-' + x.getDate()
+			 */
+			
+			jQuery.ajax({
+				type: "POST",
+				url: "checkMachineTime?year="+year+"&month="+month+"&date="+date+"&machineTime0101="+machineTime0101+"&equipCode="+equipCode,
+				dataType: "json", 
+				cache: false,
+				enctype: 'multipart/form-data',
+		
+				processData: false,
+				contentType: false,
+				success: function (data) {
+					//mini.get("foNo").setValue(data);
+					var result=data.result;
+					if(result==0){
+						/* alert("ddddddds"); */
+					}else{
+					alert("时间冲突,请重新选择时间!");	
+					}
+					
+					
+				}
+			});
+			
+		} 
  /*   function waixiecheck(){
 	    var form=new mini.Form("#form2");
 	    var data = form.getData();
@@ -282,6 +383,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        if (data) {
                            btnEdit.setValue(data.machineId);
                            btnEdit.setText(data.machineName);
+                           machineName=data.machineName;
+                           $("#machineName").attr("value",machineName);
                            //mini.get("connector").setValue(data.connector);
                            //mini.get("connectorTel").setValue(data.connectorTel);
                        }

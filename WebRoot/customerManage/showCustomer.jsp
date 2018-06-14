@@ -70,11 +70,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	    //window.setInterval(function(){grid.load()},5000);
 	    //alert("dddd");
-	function Search(){
-     var s=mini.get("companyname").getValue();
-       /*  var s=document.getElementById("username").getValue; */
-	 	alert(s);
-	 	grid.load({companyname:s});
+		function Search(){
+    	 var s=mini.get("companyname").getValue();
+     	  /*  var s=document.getElementById("username").getValue; */
+	 		alert(s);
+	 		grid.load({companyname:s});
 	 }
         
   $("#username").bind("keydown", function (e) {

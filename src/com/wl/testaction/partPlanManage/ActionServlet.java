@@ -316,8 +316,10 @@ public class ActionServlet {
 	public void addProPlan(HttpServletRequest request, HttpServletResponse response,String pathTo)
 	throws ServletException, IOException {
 		Order order = MyBeanUtil.get(request, Order.class);
+		
 		List<Order> orders = new ArrayList<Order>();
 		orders.add(order);
+		
 		
 		try {
 			addPartsPlanUtil(request, orders);
@@ -373,9 +375,8 @@ public class ActionServlet {
 		request.getSession().setAttribute("willSeeParts",data);
 		System.out.println(data);
 		System.out.println(pathTo);
-//	if (!"".equals(pathTo)) {
-//			request.getRequestDispatcher("partPlanManage/"+pathTo).forward(request, response);
-//		}
+
+
 	}
 	
 	@SuppressWarnings({ "unchecked", "deprecation" })

@@ -7,13 +7,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>"><script type="text/javascript" src="<%=path %>/scripts/boot.js"></script>
+    <base href="<%=basePath%>">
     
     <title>零件甘特图</title>
     
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
-	<script src="<%=path %>/GT/scripts/jquery.min.js" type="text/javascript"></script>
+	<script src="<%=path %>/GT/scripts/jquery-1.6.2.min.js" type="text/javascript"></script>
 	<script src="<%=path %>/GT/scripts/miniui/miniui.js" type="text/javascript"></script>
 	<script src="<%=path %>/GT/scripts/miniui/locale/zh_CN.js" type="text/javascript"></script>
 
