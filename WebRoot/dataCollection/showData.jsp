@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="<%=path %>/scripts/miniui/themes/icons.css" rel="stylesheet" type="txt/css"></link>
    
     <title>已发通知</title>
+    <div></div>>
     <style type="text/css">
     	*{margin: 0;padding: 0;}
     </style>
