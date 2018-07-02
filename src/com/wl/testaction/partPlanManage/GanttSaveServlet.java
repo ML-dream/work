@@ -65,7 +65,7 @@ public class GanttSaveServlet extends HttpServlet {
 		    	SimpleDateFormat formatter= new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 		        String Start = formatter.format(start); 
 		        String Finish =formatter.format(finish);
-		        String  isCo=map2.get("isCo").toString();
+		        String  isCo="0"/*map2.get("isCo").toString()*/;
                 String Sql;
 //	    		System.out.println(start);
 		      String sql ="update processesplan set planstarttime=to_date('"+Start+"','yyyy-mm-dd hh24:mi:ss'),"+

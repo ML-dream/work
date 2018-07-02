@@ -57,9 +57,9 @@ public class dataFeedback extends HttpServlet {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}*/
-		
+		String machineId = request.getParameter("machineId");
 	    
-	    String noticeWillSql = "select t.x_axis_feed_speed, t.x_axis_coordinates,t.id from DATACOLLECTION t";
+	    String noticeWillSql = "select t.x_axis_feed_speed, t.x_axis_coordinates,t.machineid from DATACOLLECTION t where machineId = '"+machineId+"'";
 	    List<dataCollectionTable> notices = new ArrayList<dataCollectionTable>();
 		try {
 			notices = Sqlhelper.exeQueryList(noticeWillSql,null, dataCollectionTable.class);

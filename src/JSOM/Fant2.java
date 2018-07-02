@@ -9,7 +9,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 
 //�㲻������Ǹ�ʲô��˼��������
-public class FandT implements Serializable{
+public class Fant2 implements Serializable{
 	public String Name;
 	public String UID;
 	public  int _id;
@@ -18,16 +18,16 @@ public class FandT implements Serializable{
 	public int _level;
 	public int _height;
 	
-	public java.util.List<Task> Tasks=new ArrayList<Task>();
+	public java.util.List<MachineTimeGT> Tasks=new ArrayList<MachineTimeGT>();
 	
 	
 	@JsonIgnore
-	public java.util.List<Task> getTasks() {
+	public java.util.List<MachineTimeGT> getTasks() {
 		return Tasks;
 	}
 	@JsonIgnore
 
-	public void setTasks(java.util.List<Task> Tasks) {
+	public void setTasks(java.util.List<MachineTimeGT> Tasks) {
 		this.Tasks = Tasks;
 	}
 	@JsonIgnore

@@ -100,8 +100,8 @@ public class AddShiyanOrderServlet extends HttpServlet {
 	    //System.out.print(equipCode);
 	  
 	    String equipCode = ChineseCode.toUTF8(requestValueMap.get("equipCode").trim());
-	    String machineName = requestValueMap.get("machineName").trim();
-	    String machineTime01 =ChineseCode.toUTF8(requestValueMap.get("machineTime01").trim())+ requestValueMap.get("machineTime0101").trim();
+	   // String machineName = requestValueMap.get("machineName").trim();
+	    //String machineTime01 =ChineseCode.toUTF8(requestValueMap.get("machineTime01").trim())+ requestValueMap.get("machineTime0101").trim();
 	    /*System.out.print(equipCode);
 	    System.out.print(machineTime01);*/
 	    
@@ -292,7 +292,7 @@ public class AddShiyanOrderServlet extends HttpServlet {
 				"(?,?,?,?," +
 				"?,?," +
 				"?,?)";
-		String[] params2 = {orderId,foIdId,equipCode,machineName,deptUser,connector,machineTime01,equipCode+machineTime01};
+		//String[] params2 = {orderId,foIdId,equipCode,machineName,deptUser,connector,machineTime01,equipCode+machineTime01};
 		
 		
 /******************************************以下是所有sql语句的操作！！！****************************************************/
@@ -342,14 +342,14 @@ public class AddShiyanOrderServlet extends HttpServlet {
 			result = "操作失败";
 			e.printStackTrace();
 		}
-		try {
+		/*try {
 			Sqlhelper.executeUpdate(MachineInfoTime_Sql, params2);
 			
 		} catch (Exception e) {
 			
 			result = "时间冲突，重新核实设备的预约时间！";
 			e.printStackTrace();
-		}
+		}*/
 /*****************************************************制作零件计划*************************************************/
 		// "{'orderId':'"+orderId+"','productId':'"+productId+"','issueNum':'"+issueNum+"','productName':'"+productName+"','sortie':'"+sortie+"','drawingId':'"+drawingId+"'}";
 		request.setAttribute("orderId", orderId);
@@ -419,8 +419,8 @@ public class AddShiyanOrderServlet extends HttpServlet {
 					"B.FO_NO,B.FO_OPNAME,B.OPER_TIME,B.EQUIPCODE,B.IS_CO isco " +
 					"from foHeader A  " +
 					"left join fo_detail B on A.foId=B.foId and A.productId=B.product_id  " +
-					"where A.orderId=? and A.productId=? and A.issueNum=? and A.drawingId=? and B.isinuse='1' ";
-			String[] getProParams = {order.getOrderId(),order.getProductId(),order.getIssueNum(),order.getDrawingId()};
+					"where A.orderId=? and A.productId=? and A.issueNum=?  and B.isinuse='1' ";
+			String[] getProParams = {order.getOrderId(),order.getProductId(),order.getIssueNum()};
 			
 			List<FoDetail> foDetails = new ArrayList<FoDetail>();
 			foDetails = Sqlhelper.exeQueryList(getProSql, getProParams, FoDetail.class);
@@ -514,7 +514,7 @@ public class AddShiyanOrderServlet extends HttpServlet {
 						"?,to_date(?,'yyyy-mm-dd,hh24:mi:ss'),?,to_date(?,'yyyy-mm-dd,hh24:mi:ss'),?,?)";
 				
 				String[] ProPlanParams2 = {uuid,foDetail.getOrderId(),foDetail.getProductId(),foDetail.getIssueNum(),foDetail.getDrawingId(),
-						foDetail.getFoNo(),foDetail.getProductNum()+"",Etime,Etime,"1",
+						foDetail.getFoNo(),foDetail.getProductNum()+"",createTime,createTime,"1",
 						createPerson,createTime,
 						createPerson,createTime,createPerson,createTime,foDetail.getEquipCode(),foDetail.getIsCo()};
 				try {

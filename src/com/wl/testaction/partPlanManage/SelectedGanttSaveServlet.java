@@ -43,7 +43,9 @@ public class SelectedGanttSaveServlet extends HttpServlet {
 			buffer.append(string);
 		}		//取参数
 		String s = JSON.Encode(buffer.toString());	//参数重新编码吗为json
-		
+	
+		//String strJson = request.getParameter("strJson");
+		String machineId = request.getParameter("machineId");
 		ArrayList totaldata = (ArrayList)Test.JSON.Decode(s);	//参数转换为list
 	    	for(int i=0,l=totaldata.size(); i<l; i++){
 		    	HashMap<Object,Object> datamap = (HashMap)totaldata.get(i);
@@ -55,29 +57,29 @@ public class SelectedGanttSaveServlet extends HttpServlet {
 		    	SimpleDateFormat formatter= new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 		        String Start = formatter.format(start); 
 		        String Finish =formatter.format(finish);
-		        String  isCo=map2.get("isCo").toString();
-		        String orderId=map2.get("orderId").toString();
-		        String productId=map2.get("productId").toString();
-		        String issueNum=map2.get("issueNum").toString();
-		        String operId=map2.get("UID").toString();
+		        String  isCo= "0";         //map2.get("isCo").toString();
+		        String orderId=map2.get("Name").toString();
+		       String productId=map2.get("productId").toString();
+		        String issueNum="1";//map2.get("issueNum").toString();
+		        String operId=map2.get("operId").toString();
                 String Sql;
 		      String sql ="update processesplan set planstarttime=to_date('"+Start+"','yyyy-mm-dd hh24:mi:ss'),"+
 		      		      "planendtime=to_date('"+Finish+"','yyyy-mm-dd hh24:mi:ss'),"+
 		    		      " isCo='"+isCo+"' " +
 		      			  "where orderid=? and productId=? and issuenum=?  and operId=?";
-		        if(isCo=="1"||isCo.equals("1")){
+		       /* if(isCo=="1"||isCo.equals("1")){
 			         String workBranch="waix";
 			          Sql="update fo_detail set is_Co='"+isCo+"',workbranch='"+workBranch+"' where product_Id=? and issue_Num=? and fo_no=? and foId=(select foId from foheader where orderId=? and productId=? and issueNum=? )";
 			        }
 		        else{
 		        	  Sql="update fo_detail set is_Co='"+isCo+"' where product_Id=? and issue_Num=? and fo_no=? and foId=(select foId from foheader where orderId=? and productId=? and issueNum=? )";
-		        }
+		        }*/
 		      String[] params={orderId,productId,issueNum,operId};
-		      String[] Params={productId,issueNum,operId,orderId,productId,issueNum};
+		     // String[] Params={productId,issueNum,operId,orderId,productId,issueNum};
 		     try {
 
 		    	   Sqlhelper.executeUpdate(sql, params);
-		    	   Sqlhelper.executeUpdate(Sql, Params);
+		    	  // Sqlhelper.executeUpdate(Sql, Params);
 				} catch (SQLException e) {
 					String json = "{\"result\":\"操作失败!\"}";
 					response.setCharacterEncoding("UTF-8");
@@ -90,51 +92,7 @@ public class SelectedGanttSaveServlet extends HttpServlet {
 			String json = "{\"result\":\"操作成功!\"}";
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().append(json).flush();
-//   JSONArray jsonArray = JSONArray.fromObject(data);
-//   List<FandT> ftList=JSONArray.toList(jsonArray, FandT.class);
-//   for(int i=0;i<ftList.size();i++){
-//	   FandT fandt=ftList.get(i);
-//	   String taskdata=fandt.getTasks();
-//	   JSONArray taskjsonArray = JSONArray.fromObject(taskdata);
-//	   List<Task> taskList=JSONArray.toList(taskjsonArray, Task.class);
-//      for(int j=0;j<taskList.size();j++)
-//      {    Task task=taskList.get(j);
-//           String orderId=task.getOrderId();
-//           String productId=task.getProductId();
-//           String issueNum=task.getIssueNum();
-//           String operId=task.getUID();
-//           String Start=task.getStart();
-//           String Finish=task.getFinish();
-//           String isCo=task.getIsCo();
-//           String Sql;
-//           String sql ="update processesplan set planstarttime=to_date('"+Start+"','yyyy-mm-dd hh24:mi:ss'),"+
-//  		              "planendtime=to_date('"+Finish+"','yyyy-mm-dd hh24:mi:ss'),"+
-//		              " isCo='"+isCo+"' " +
-//  			          "where orderid=? and productId=? and issuenum=?  and operId=?";
-//           if(isCo=="1"||isCo.equals("1")){
-//                     String workBranch="waix";
-//                     Sql="update fo_detail set is_Co='"+isCo+"',workbranch='"+workBranch+"' where product_Id=? and issue_Num=? and fo_no=? and foId=(select foId from foheader where orderId=? and productId=? and issueNum=? and drawingId=?)";
-//                    }
-//           else{
-//    	             Sql="update fo_detail set is_Co='"+isCo+"' where product_Id=? and issue_Num=? and fo_no=? and foId=(select foId from foheader where orderId=? and productId=? and issueNum=? )";
-//                    }
-//           String[] params={orderId,productId,issueNum,operId};  
-//           String[] Params={productId,issueNum,operId,orderId,productId,issueNum};
-//           try {
-// 	          Sqlhelper.executeUpdate(sql, params);
-// 	          Sqlhelper.executeUpdate(Sql, Params);
-//		       } catch (SQLException e) {
-//			     String json = "{\"result\":\"操作失败!\"}";
-//			     response.setCharacterEncoding("UTF-8");
-//			     response.getWriter().append(json).flush();
-//			     e.printStackTrace();
-//		        }
-//            }
-//        }
-//   
-//			  String json = "{\"result\":\"操作成功!\"}";
-//			  response.setCharacterEncoding("UTF-8");
-//			  response.getWriter().append(json).flush();    
+;    
 	}
 
 }

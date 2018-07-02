@@ -6785,4 +6785,44 @@
     <servlet-name>ShowMachineNodeInfo</servlet-name>
     <url-pattern>/ShowMachineNodeInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>这个适用于建立模拟订单的时候选择设备详细的时间的信息的后台！！！</description>
+    <display-name>machineSeclectTimeGantt</display-name>
+    <servlet-name>machineSeclectTimeGantt</servlet-name>
+    <servlet-class>com.wl.testaction.machineManage.machineSeclectTimeGantt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>machineSeclectTimeGantt</servlet-name>
+    <url-pattern>/machineSeclectTimeGantt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MachineTimeGT</display-name>
+    <servlet-name>MachineTimeGT</servlet-name>
+    <servlet-class>JSOM.MachineTimeGT</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MachineTimeGT</servlet-name>
+    <url-pattern>/MachineTimeGT</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Fant2</display-name>
+    <servlet-name>Fant2</servlet-name>
+    <servlet-class>JSOM.Fant2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Fant2</servlet-name>
+    <url-pattern>/Fant2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>machineInfoList</display-name>
+    <servlet-name>machineInfoList</servlet-name>
+    <servlet-class>DataCollection.machineInfoList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>machineInfoList</servlet-name>
+    <url-pattern>/machineInfoList</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -136,7 +136,7 @@ public class JackSonTrans {
 	/*param  List<FantT>
    return  Json*/
 	//����FandT���ϣ�����һ��Json
-	public static String  JsonBack(java.util.List<FandT> ftList){
+	public static String  JsonBack2(List<Fant2> ftList){
 
 		StringWriter sw = new StringWriter();
 
@@ -172,6 +172,42 @@ public class JackSonTrans {
 		
 	}
 
+	
+	public static String  JsonBack(java.util.List<FandT> ftList){
+
+		StringWriter sw = new StringWriter();
+
+		try {
+			ObjectMapper mapper = new ObjectMapper();  
+			mapper.writeValue(sw,ftList);  //��ftListд��sw�У�����
+			
+
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("��FandT��Jsonת������쳣");
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("��FandT��Jsonת������쳣");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("��FandT��Jsonת������쳣");
+		}
+		System.out.println("sw.toString()=="+sw.toString());
+	    String oldString = sw.toString();
+	    String newString = oldString
+	    .replaceAll(",\"_id\":0", "")
+	    .replaceAll(",\"_uid\":0", "")
+	    .replaceAll(",\"_pid\":0", "")
+	    .replaceAll(",\"_level\":0", "")
+	    .replaceAll(",\"_height\":0", "")
+	    .replaceAll(",\"Tasks\":\\[\\]", "");
+	    //System.out.println("newString========"+newString);
+		return newString;
+		
+	}
 	/*��json���(����ݿ��ȡ��json)
 	 * ������Ganttҳ�淵�ص����*/
 	//����Json������һ��FandT���ϣ�����

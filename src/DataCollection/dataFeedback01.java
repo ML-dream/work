@@ -47,6 +47,8 @@ public class dataFeedback01 extends HttpServlet {
 	    String createTime = df.format(new Date());
 	    String changeTime = df.format(new Date());
 	    
+	    String machineId = request.getParameter("machineId");
+	    System.out.print(machineId);
 //	    HttpSession session = request.getSession();
 //	    String createPerson = ((User)session.getAttribute("user")).getStaffCode();
 //	    String changePerson = ((User)session.getAttribute("user")).getStaffCode();	

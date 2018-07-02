@@ -87,13 +87,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </tr>
        <!-- ..........................以下为设备的预约信息。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。 -->
        <tr>
+      <!-- <div class="mini.window" > -->
             <td><label for="equipCode$text">设备预约</label></td>
 	    	<td><input id="equipCode" name="equipCode" class="mini-buttonedit" width="66%" onbuttonclick="onButtonEditMachine" required="true" allowInput="false"/>
        	
-  			<a class="mini-button" iconCls="icon-search" width="30%" plain="false"  onclick="search()">预约查询</a>
-  		
+  			<a class="mini-button" iconCls="icon-search" width="30%" plain="false"  onclick="search()">保存并预约设备</a>
   		</td>
-       		<td><label for="machineTime01$text">预约时间一</label></td>
+  		<!-- </div> -->
+       		<!-- <td><label for="machineTime01$text">预约时间一</label></td>
             <td style="width:25%;">
             <input id="machineTime01" name ="machineTime01" class="mini-datepicker" width="66%" dateFormat="yyyy-MM-dd" allowInput="true" showTodayButton="true" required="true" onvaluechanged="onChange()" ondrawdate="onDrawDate" />
 			<input id="machineTime0101"  name="machineTime0101" class="mini-combobox" style="width:30%;" textField="text" valueField="id" emptyText="请选择..."
@@ -104,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <input id="machineTime02" name ="mahineTime02" class="mini-datepicker" width="66%" dateFormat="yyyy-MM-dd" allowInput="true" showTodayButton="true"  required="true" ondrawdate="onDrawDate"/>
           	<input id="machineTime0202"  name="machineTime0202" class="mini-combobox" style="width:30%;" textField="machineTime0202" valueField="machineTime0202" emptyText="请选择..."
     				url="GetOrderHeadServlet" value="NL-XS"  required="true" allowInput="false" showNullItem="true" nullItemText="请选择..."/>   
-           </td>
+           </td> -->
          
          
          
@@ -145,6 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			var month=x.getMonth()+1;
  			var date = x.getDate();  			
  			var machineTime0101= mini.get("machineTime0101").getValue();
+ 			
    			/* x=x.getFullYear() + '-' + month+ '-' + x.getDate()
    			 */
    			
@@ -185,16 +187,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(equipCode=="") {
                 alert("请先选择设备…………");
             }else{
+            	getForm();
+            	
+            	var orderId= mini.get("orderHead").getValue()+mini.get("orderId").getValue();
+            	 
             	mini.open({
-                    url: "machineManage/seclectMachineTime.jsp",
-                    title:machineName,
-                    width: 650,
-                    height: 380,
+                    url: "machineManage/machineTimeGT.jsp",
+                    title:machineName+"(订单"+orderId+"保存成功，请预定设备时间…………)",
+                    width: 1200,
+                    height: 600,
                     //父窗口向子窗口传值；                    
                     onload: function () {
                         var iframe = this.getIFrameEl();
   
-                        var data = { action:equipCode};
+                        var data = { action:equipCode,orderId:orderId};
                         iframe.contentWindow.SetData(data);
                         
                     },
@@ -209,6 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                
                                 
                             }
+                            window.location.href = window.location.href;
                         }
                     }
                 });
@@ -275,7 +282,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				contentType: false,
       				success: function (data) {
         				alert(data.result);
-        				/* window.location.href = window.location.href; */
+        				 window.location.href = window.location.href; 
+        				//mini.get(div).setVisible(true)
       				}
     			});
     		}

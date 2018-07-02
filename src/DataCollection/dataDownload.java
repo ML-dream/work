@@ -1,5 +1,139 @@
 package DataCollection;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.wl.forms.StockInfo;
+import com.wl.forms.dataCollectionTable;
+import com.wl.tools.ExportExcelUtil;
+import com.wl.tools.Sqlhelper;
+
+public class dataDownload extends HttpServlet {
+
+	/**
+	 * Constructor of the object.
+	 */
+	public dataDownload() {
+		super();
+	}
+
+	/**
+	 * The doGet method of the servlet. <br>
+	 *
+	 * This method is called when a form has its tag value method equals to get.
+	 * 
+	 * @param request the request send by the client to the server
+	 * @param response the response send by the server to the client
+	 * @throws ServletException if an error occurred
+	 * @throws IOException if an error occurred
+	 */
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request,response);
+	}
+
+	/**
+	 * The doPost method of the servlet. <br>
+	 *
+	 * This method is called when a form has its tag value method equals to post.
+	 * 
+	 * @param request the request send by the client to the server
+	 * @param response the response send by the server to the client
+	 * @throws ServletException if an error occurred
+	 * @throws IOException if an error occurred
+	 */
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+	    //String warehouseId=request.getParameter("warehouseId");
+	    String machineId=request.getParameter("machineId");
+	    String totalCountSql="";
+	    String sql="";
+	    if(machineId.equals("")){
+	    	totalCountSql ="select count(*) from datacollection01 ";
+		    sql= "select b.x_axis_feed_speed, b.x_axis_coordinates from datacollection01 t";
+	    }else{
+	    	totalCountSql ="select count(*) from datacollection01 ";
+		    sql= "select b.x_axis_feed_speed, b.x_axis_coordinates,b.id from datacollection01 b";
+	    }
+	    
+		 List<dataCollectionTable> resultList = new ArrayList<dataCollectionTable>();
+		 try{
+	     resultList=Sqlhelper.exeQueryList(sql, null, dataCollectionTable.class);
+	    
+	  	}catch(Exception e){
+	  	e.printStackTrace();
+	  	}
+	  
+	  	LinkedHashMap<String, String> dataCollection = new LinkedHashMap<String, String>();
+		dataCollection.put("xaxisfeedspeed", "x轴速度");
+		dataCollection.put("xaxiscoordinates", "坐标位置名称");
+		/*liebiaoxiang.put("spec", "规格");
+		liebiaoxiang.put("itemTypeDesc", "类型");
+		liebiaoxiang.put("warehouseName", "库房");
+		liebiaoxiang.put("stockId", "库位");
+		liebiaoxiang.put("stockNum", "库存量");
+		liebiaoxiang.put("unitPrice", "单价");
+		liebiaoxiang.put("unit", "单位");*/
+	
+		List<Integer> columnWidth = new ArrayList<Integer>();
+		columnWidth.add(5500);
+		columnWidth.add(5500);
+		/*columnWidth.add(5500);
+		columnWidth.add(5500);
+		columnWidth.add(5500);
+		columnWidth.add(5500);
+		columnWidth.add(5500);
+		columnWidth.add(5500);
+		columnWidth.add(5500);*/
+	
+
+		
+		
+		
+		ExportExcelUtil.exportExcel(request, response, dataCollection, columnWidth, resultList);
+	  	
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package DataCollection;
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -71,10 +205,10 @@ public class dataDownload extends HttpServlet {
 				System.out.print("关闭的语句");
 			}
 		json = PluSoft.Utils.JSON.Encode(notices);
-		/*for (int i = 0; i < json.length(); i++) {
+		for (int i = 0; i < json.length(); i++) {
 			
 		}
-	    */
+	    
 //		json = json.substring(1, json.length()-1);
 		json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
 		
@@ -95,3 +229,4 @@ public class dataDownload extends HttpServlet {
 		System.out.println(json1);
 	}
 }
+*/
