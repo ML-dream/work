@@ -16,6 +16,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="<%=path %>/scripts/miniui/miniui.js"></script>
 		<link href="<%=path %>/scripts/miniui/themes/default/miniui.css" rel="stylesheet" type="txt/css"></link>
 		<link href="<%=path %>/scripts/miniui/themes/icons.css" rel="stylesheet" type="txt/css"></link>
+		
+		<script type="text/javascript" src="<%=path %>/js/echarts.js"></script>
+   		 <script type="text/javascript" src="<%=path %>/js/echarts.min.js"></script>
+   		 <script type="text/javascript" src="<%=path %>/js/jquery-2.1.4.min.js"></script>
+	<style> 
+/* .container,.container1,.container2{ float:left}  没有用*/
+#container {
+     width: 180px;
+   
+    height: 120px;    
+
+    float:left;     
+}
+#container1 {
+     width: 220px;
+  
+    height: 120px;    
+
+    float:left;     
+}
+#container2 {
+    width: 180px;
+  
+    height: 120px;    
+      float:left;
+    }
+</style> 	
+
+		
    
     <title>机床数据采集的实时显示</title>
     <style type="text/css">
@@ -26,8 +55,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;"> 
   	 <a class="mini-button" iconCls="icon-save" plain="false"  onclick="lookMachineInfo()">查看设备详细记录</a>
-  	 
+
   	 </div>
+  	 
+  	 
+  	 
+<!--  <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head">dffd</div> -->
+
+
+  <!--   <div class="container-fluid">
+        <div class="row-fluid example">
+            <div id="sidebar-code" class="col-md-4">
+                <div class="well sidebar-nav">
+                    <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                    <textarea id="code" name="code">
+ -->
+  	 
+  	 
+  	 
+  	 
   <!-- 	<div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;"> 
 	            <a class="mini-button" iconCls="icon-reload" plain="false" onclick="refresh()">刷新</a>
 	            
@@ -109,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  
  
- <div id="add" style="background:#EFEFEF" >
+<!--  <div id="add" style="background:#EFEFEF" >
 		<form name="form1" id="form1" method="post" enctype="multipart/form-data">
 			<table class="green_list_table" align="center" width="100%" border="1" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
 			<tr>
@@ -257,7 +303,355 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    </tr>
 			</table>
 		</form>
+		</div> -->
+    
+  <!--  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>  -->
+
+	<fieldset style="width: 100%;" align="center">
+		<legend>
+			实时信息显示
+		</legend>
+
+
+   <div id="grid1" class="cals" style="padding:2px;border-top:50;border-left:10;position:relative;border-right:0;width:100%;height:150px;">
+   		 <div id="container" style="height:150%;margin:0px auto;margin-top:0px;margin-left:220px;"></div>
+   		  <div id="container1" style="height:150%;"></div>
+   		   <div id="container2" style="height:150%;"></div>
+   		   
+   	<fieldset style="width: 100%;" align="center">
+		<legend>
+			机床基本信息
+		</legend>
+  <div id="add" style="background:#EFEFEF" >
+		<form name="form1" id="form1" method="post" enctype="multipart/form-data">
+			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
+			<tr>
+								<th>机床名称</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">机床IP</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">连接状态</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    </tr>
+			    <tr>
+			    			<th>数控系统</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    
+			        <th width="12%">累计开机时间</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">最大轴数</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    </tr>
+   
+			</table>
+		</form>
 		</div>
+		
+		<fieldset style="width: 100%;" align="center">
+		<legend>
+			机床加工信息
+		</legend>
+  <div id="add2" style="background:transparent" >
+		<form name="form1" id="form2" method="post" enctype="multipart/form-data">
+			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#FFFFFF">
+			<tr>
+					<th>运行模式</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">加工状态</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">机床报警</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    </tr>
+			    <tr>
+			    			<th>主程序号</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    
+			        <th width="12%">执行号号</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">执行代码</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    </tr>
+   
+			</table>
+		</form>
+		</div>
+		
+		
+		<fieldset style="width: 100%;" align="center">
+		<legend>
+			参数监控
+		</legend>
+  <div id="add3" style="background:#EFEFEF" >
+		<form name="form1" id="form2" method="post" enctype="multipart/form-data">
+			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
+			<tr>
+					<th>运行模式</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">加工状态</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">机床报警</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    </tr>
+			    <tr>
+			    			<th>主程序号</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    
+			        <th width="12%">执行号号</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">执行代码</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    </tr>
+   
+			</table>
+		</form>
+		</div>
+      
+      
+      
+      
+ <script type="text/javascript">
+ 
+		var dom = document.getElementById("container");
+		var dom1 = document.getElementById("container1");
+		var dom2 = document.getElementById("container2");
+		var myChart = echarts.init(dom);
+		var myChart1 = echarts.init(dom1);
+		var myChart2 = echarts.init(dom2);
+		
+		var app = {};
+		option = null;
+		option = {
+			    tooltip : {//这个是用来编辑鼠标悬停上然后显示相关内容的
+			        formatter: "{a} <br/>{b} : {c}%",
+			       	textStyle: {//凡是tyextStyle就是用来调整文字格式 的
+			                fontSize: 1
+			              
+			            }
+			    },
+			    toolbox: {//用来编辑工具箱的
+			        feature: {
+			        restore: {},
+			        saveAsImage: {}
+			        }
+			    },
+			    grid: {//如果有坐标用来画网格，同时调整图像的位置，此处仪表盘没用
+			    	x:10,
+			    	y:10
+			    	},
+			    series: [//很重要，对于仪表盘来说可以调整几乎所有的数据相关，细节部分的显示
+			        {
+			            name: '业务指标',//图标的名字，在悬停时进行显示
+			            type: 'gauge',//调用不同的图标函数
+			            radius: '90%',//调整表的大小
+			            detail: {formatter:'{value}%'},//detail，用处很大，控制实时显示的数据格式，大小等等重要！！！
+			            data: [{value: 50, name: '完成率0'}],//这个用来显示实时现实的数值内容！并且name后面显示单位，但是
+			            //可以用来显示其他的任意的，比如显示图标的名字
+			            
+			            min:0,//显示仪表盘的显示范围！
+			            max:120,
+			            splitNumber:5,//显示将上面的这个范围划分为多大的小范围，就是刻度
+			            axisLine: {            // 坐标轴线，用来控制仪表盘外边的盘的边的！粗细！
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    width: 5
+			                }
+			            },
+			            axisTick: {            // 坐标轴小标记，控制每个大刻度的伸出长度！！！！
+			                length :15,        // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    color: 'auto'
+			                }
+			            },
+			            axisLabel: {            // 坐标轴小标记，控制小刻度的伸出长度！！！！
+			                textStyle: {       // 属性lineStyle控制线条样式
+			                	fontSize: 5
+			                }
+			            },
+			            detail:{//这个就是之前那个detail，可以调整的东西很多，在仪表盘中我只用来调增显示的数值大小
+			            	textStyle: {  
+			            	
+			                   	 fontSize: 5
+			                			}
+			            	
+			            },
+			            splitLine: {           // 分隔线的！！粗细！！！
+			                length :20,         // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+			                    color: 'auto'
+			                }
+			            },
+			            title : {
+			            	 show : true,
+			                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+			                    fontWeight: 'bolder',
+			                    fontSize: 5,
+			                    fontStyle: 'italic'
+			                			}
+			            		}
+			            
+			            
+			            
+			        }
+			    ]
+			};
+		option1 = {
+			    tooltip : {
+			        formatter: "{a} <br/>{b} : {c}%"
+			    },
+			    toolbox: {
+			        feature: {
+			        restore: {},
+			        saveAsImage: {}
+			        }
+			    },
+			    grid: {
+			    	x:10,
+			    	y:10
+			    	},
+			    series: [
+			        {
+			            name: '业务指标',
+			            type: 'gauge',
+			            radius: '90%',
+			            detail: {formatter:'{value}%'},
+			            data: [{value: 50, name: '完成率1'}],
+			            
+			            min:0,
+			            max:220,
+			            splitNumber:11,
+			            axisLine: {            // 坐标轴线
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    width: 10
+			                }
+			            },
+			            axisTick: {            // 坐标轴小标记
+			                length :15,        // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    color: 'auto'
+			                }
+			            },
+
+			            detail:{
+			            	textStyle: {  
+			            	
+			                   	 fontSize: 5
+			                			}
+			            	
+			            },
+			            splitLine: {           // 分隔线
+			                length :20,         // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+			                    color: 'auto'
+			                }
+			            },
+			            title : {
+			                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+			                    fontWeight: 'bolder',
+			                    fontSize:5,
+			                    fontStyle: 'italic'
+			                			}
+			            		}
+			            
+			            
+			            
+			        }
+			    ]
+			};
+		option2 = {
+			    tooltip : {//这个是控制悬浮窗的文字显示形式等等
+			        formatter: "{a} <br/>{b} : {c}%"
+			    },
+			    toolbox: {
+			        feature: {
+			        restore: {},
+			        saveAsImage: {}
+			        }
+			    },
+			    grid: {
+			    	x:10,
+			    	y:10
+			    	},
+		        
+			    series: [
+			        {
+			            name: '业务指标',
+			            type: 'gauge',
+			            radius: '90%',
+			            detail: {formatter:'{value}%'},
+			            data: [{value: 5, name: '完成率2'}],
+			            
+			            min:0,
+			            max:220,
+			            splitNumber:5,
+			            axisLine: {            // 坐标轴线
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    width: 10
+			                }
+			            },
+
+			            detail:{
+			            	formatter:'{value}%',
+			            	textStyle: {  
+			                   	 fontSize: 5
+			                			}
+			            	
+			            },
+			            axisTick: {            // 坐标轴小标记
+			                length :15,        // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle控制线条样式
+			                    color: 'auto'
+			                }
+			            },
+			            title : {
+			                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+			                    fontWeight: 'bolder',
+			                    fontSize: 3,
+			                    fontStyle: 'italic'
+			                			}
+			            		},
+			            splitLine: {           // 分隔线
+			                length :20,         // 属性length控制线长
+			                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+			                    color: 'auto'
+			                }
+			            }
+			            
+			            
+			            
+			        }
+			    ]
+			};
+
+			setInterval(function () {
+			    option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+			    option1.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+			    option2.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+			    myChart.setOption(option, true);
+			    myChart1.setOption(option1, true);
+			    myChart2.setOption(option2, true);
+			},2000);
+		
+		
+		if (option && typeof option === "object") {
+		    myChart.setOption(option, true);
+		    myChart1.setOption(option1, true);
+		    myChart2.setOption(option2, true);
+		}
+		       </script>
+    
+    
+    
+    
+    
+    
+    
     
     
    <script>
@@ -269,14 +663,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     update();
          setInterval(update, 3000); 
 	    }  */
-	    update();
-	     setInterval(update, 500); 
+	  /*   update(); */
+	    /*  setInterval(update, 500);  */
 	    function onclick(){
           /*   mini.get("piece_barcode").setValue("niuhfy"); */
             update();
 	    }
-	     update();
-         setInterval(update, 3000);
+	    /*  update(); */
+   /*       setInterval(update, 3000); */
 	     function update(){
 	    	 
 	    	 var machineId = "<%=request.getParameter("machineId")%>";
@@ -300,6 +694,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	    
 	    
+	     /* ^^^^^^^^^………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………… */
+	     
+
+	     
+	     /*  …………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………*/
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
 	
 	    
 	    function ondEdit(id,isReaded){

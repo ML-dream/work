@@ -96,10 +96,13 @@ public class OrderSpecServlet extends HttpServlet {
 		{
 			request.getRequestDispatcher("orderManage/EditOrderSpec.jsp").forward(request, response);
 		}
-		else 
+		else if(isModify.equals("1"))
 		{
 			request.getRequestDispatcher("orderManage/ModifyOrderSpec.jsp").forward(request, response);
-		}
+		}else {
+			
+			request.getRequestDispatcher("orderManage/machineOrderToo.jsp").forward(request, response);
+			}
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {

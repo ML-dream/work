@@ -46,18 +46,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </td>
 	             -->
 	       </tr>
-	       <tr>
-	       		<td><label for="hourPercent$text">工时百分比</label></td>
-		   		<td><input id="hourPercent" name="hourPercent" class="mini-textbox" width="100%"   /></td>
-		   		<td><label for="countPercent$text">计件百分比</label></td>
-		        <td><input id="countPercent" name="countPercent" class="mini-textbox" width="100%" /></td>
+	       <tr style="display:none">
+	       		<td style="display:none"><label for="hourPercent$text">工时百分比</label></td>
+		   		<td style="display:none"><input id="hourPercent" name="hourPercent" class="mini-textbox" width="100%"   /></td>
+		   		<td style="display:none"><label for="countPercent$text">计件百分比</label></td>
+		        <td style="display:none"><input id="countPercent" name="countPercent" class="mini-textbox" width="100%" /></td>
 	   			<td><label for="outDate$text">出厂日期</label></td>
 	   			<!-- vtype="date:yyyy-MM-dd" -->
 	            <td><input id="outDate"  name="outDate" class="mini-textbox" width="100%"  emptyText="日期格式：2000-01-01"   required="false" /></td>
 			</tr>
 	   		<tr>
-	   			<td><label for="machNum$text">设备数量</label></td>
-	          	<td><input id="machNum" name="machNum" class="mini-textbox" width="100%" vtype="range:0,9999" required="false"/></td>
+	   			<td><label for="outDate$text">出厂日期</label></td>
+	   			<!-- vtype="date:yyyy-MM-dd" -->
+	            <td><input id="outDate"  name="outDate" class="mini-textbox" width="100%"  emptyText="日期格式：2000-01-01"   required="false" /></td>
+	   			<td style="display:none"><label for="machNum$text">设备数量</label></td>
+	          	<td style="display:none"><input id="machNum" name="machNum" class="mini-textbox" width="100%" vtype="range:0,9999" required="false"/></td>
 	   			<td><label for="workRange$text">加工范围</label></td>
 		        <td><input id="workRange"  name="workRange" class="mini-textbox" width="100%" required="false" /></td>
 	   			<td><label for="machineSpec$text">设备规格</label></td>

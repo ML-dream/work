@@ -54,12 +54,12 @@ public class machineSeclectTimeGantt extends HttpServlet {
 			
 			
 			
-			String taskSql = "select ISSUENUM, processplanId,orderId,productId,issueNum,drawingId,operId," +
+			String taskSql = "select ISSUENUM, machineorderstart,machineorderend,processplanId,orderId,productId,issueNum,drawingId,operId," +
 					"num,planstartTime,planendTime,operstatus,canclestatus,machineId," +
 					"isco,(planendtime-planstarttime)*24*60*60 duration " +
 					"from processesPlan " +
-					"where machineId=? and planstartTime> to_date(? ,'yyyy-mm-dd,hh24:mi:ss') order by planstartTime ";
-			String[] taskParams = {machineId,createTime};
+					"where machineId=? order by machineorderstart ";//and planstartTime> to_date(? ,'yyyy-mm-dd,hh24:mi:ss') ,createTime
+			String[] taskParams = {machineId};
 			
 			List<ProcessesPlan> processesPlanList = new ArrayList<ProcessesPlan>();
 			try {
@@ -82,8 +82,8 @@ public class machineSeclectTimeGantt extends HttpServlet {
 				MachineTimeGT.setUID(totalPlan.getProcessPlanId());
 				MachineTimeGT.setName(totalPlan.getOrderId());
 				
-				MachineTimeGT.setStart(totalPlan.getPlanStartTime());
-				MachineTimeGT.setFinish(totalPlan.getPlanEndTime());
+				MachineTimeGT.setStart(totalPlan.getMachineOrderStart());
+				MachineTimeGT.setFinish(totalPlan.getMachineOrderEnd());
 				MachineTimeGT.setPercentComplete(0);								
 				MachineTimeGT.setDuration(totalPlan.getDuration());
 				MachineTimeGT.setMachineId(machineId);

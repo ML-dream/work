@@ -6825,4 +6825,14 @@
     <servlet-name>machineInfoList</servlet-name>
     <url-pattern>/machineInfoList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>用于和订单二次编辑时插入设备的时候使用！</description>
+    <display-name>insertMachine</display-name>
+    <servlet-name>insertMachine</servlet-name>
+    <servlet-class>com.wl.testaction.orderManage.insertMachine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>insertMachine</servlet-name>
+    <url-pattern>/insertMachine</url-pattern>
+  </servlet-mapping>
 </web-app>

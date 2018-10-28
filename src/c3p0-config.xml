@@ -18,7 +18,7 @@ static{
     -->
     <default-config>
         <property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
-        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:orclwl</property>
+        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:DZQ</property>
         <property name="user">work</property>
         <property name="password">work</property>
         
@@ -46,7 +46,7 @@ static{
     
     <named-config name="ORACLE">
         <property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
-        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:orclwl</property>
+        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:DZQ</property>
         <property name="user">work</property>
         <property name="password">work</property>
         

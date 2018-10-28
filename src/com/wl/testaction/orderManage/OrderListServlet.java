@@ -27,57 +27,47 @@ public class OrderListServlet extends HttpServlet {
 		int pageNo=0;
 	    int countPerPage=10;
 	    int totalCount = 0;
-	    String orderStr = "ORDER_DATE";
-	    orderStr = StringUtil.isNullOrEmpty(request.getParameter("sortField"))?orderStr:request.getParameter("sortField");
+	   //bdate:bdate, edate:edate , customer:customer
+	    
+	    
 	    pageNo = Integer.parseInt(request.getParameter("pageIndex"))+1;
 	    countPerPage = Integer.parseInt(request.getParameter("pageSize"));
+	    
+	   /* 
+	    String  bdate = request.getParameter("bdate");
+	    String  edate = request.getParameter("edate");*/
+	    //String  customer = request.getParameter("customer");
+	    
+	    
+	    String bdate=StringUtil.isNullOrEmpty(request.getParameter("bdate"))?"":request.getParameter("bdate");
+	    String edate=StringUtil.isNullOrEmpty(request.getParameter("edate"))?"":request.getParameter("edate");
+	    
+	    
 	    String orderId=StringUtil.isNullOrEmpty(request.getParameter("orderId"))?"":request.getParameter("orderId");
 	    String customer=StringUtil.isNullOrEmpty(request.getParameter("customer"))?"":request.getParameter("customer");
-//	    String companyId=request.getParameter("companyId");
+
+	    //	    String companyId=request.getParameter("companyId");
 	   
 	    
-//	    HttpSession session = request.getSession();
-//		String userId = ((User)session.getAttribute("user")).getUserId();
-//		String staffCode =  ((User)session.getAttribute("user")).getStaffCode();
+	    HttpSession session = request.getSession();
+		String userId = ((User)session.getAttribute("user")).getUserId();
+		String staffCode =  ((User)session.getAttribute("user")).getStaffCode();
 		
-	    String totalCountSql = "select count(*) from orders where order_status<11 and order_id like '%"+orderId+"%' and customer like '%"+customer+"%'";
+	    String totalCountSql = "select count(*) from orders B left join customer C on B.CUSTOMER=C.COMPANYID  where order_status<11 and order_id like '%"+orderId+"%' and companyName like '%"+customer+"%'";
 //	    String[] params1 = {staffCode};
 	    
 //	    xiem 是否查询未交付完成订单  3表示全部订单
 	    String orderMode = StringUtil.isNullOrEmpty(request.getParameter("orderMode"))?"3":request.getParameter("orderMode");
-	    if(orderMode.equals("1")){
-	    	totalCountSql = "select count(*) from unpayedOrderId d" +
-	    			"       left join orders t on t.order_id= d.orderId " +
-	    			"where order_status<11 and order_id like '%"+orderId+"%' and customer like '%"+customer+"%'";
-	    }
-	    try {
-			totalCount = Sqlhelper.exeQueryCountNum(totalCountSql, null);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+	   
 	    
 		
 	    String OrderSql= "select ORDER_ID orderId,DEPT_USER deptUser,ORDER_DATE orderDate,ENDTIME,CUSTOMER,ORDER_STATUS orderStatus,C.COMPANYNAME companyName,D.deptname,B.connector,B.connectorTel " +
-	    	"from (select A.*,ROWNUM row_num from (select EM.* from orders EM where order_status<11 and order_id like '%"+orderId+"%' and customer like '%"+customer+"%' order by "+orderStr+" desc) " +
-	    	"A where ROWNUM<="+(countPerPage*pageNo)+" order by "+orderStr+" desc) B " +
+	    	"from (select A.*,ROWNUM row_num from (select EM.* from orders EM where order_status<11 and order_id like '%"+orderId+"%' and createperson ='"+staffCode +"'  order by ORDER_DATE desc) " +
+	    	"A where ROWNUM<="+(countPerPage*pageNo)+" order by ORDER_DATE desc) B " +
 	    	"left join customer C on B.CUSTOMER=C.COMPANYID " +
 	    	"left join dept D on B.DEPT_USER=D.deptid " +
-	    	"where row_num>="+((pageNo-1)*countPerPage+1)+" order by "+orderStr+" desc";
+	    	"where row_num>="+((pageNo-1)*countPerPage+1)+"  and  C.companyName like '%"+customer+"%' order by ORDER_DATE desc";
 	    
-	    if(orderMode.equals("1")){
-	    	OrderSql= "select ORDER_ID orderId,DEPT_USER deptUser,ORDER_DATE orderDate,ENDTIME,CUSTOMER,ORDER_STATUS orderStatus,C.COMPANYNAME companyName,D.deptname,B.connector,B.connectorTel " +
-		    	"from (select A.*,ROWNUM row_num from (" +
-		    	"select t.* from unpayedOrderId d" +
-	    			"       left join orders t on t.order_id= d.orderId " +
-	    			"where order_status<11 and order_id like '%"+orderId+"%' and customer like '%"+customer+"%' " +
-		    	" order by "+orderStr+" desc) " +
-		    	"A where ROWNUM<="+(countPerPage*pageNo)+" order by "+orderStr+" desc) B " +
-		    	"left join customer C on B.CUSTOMER=C.COMPANYID " +
-		    	"left join dept D on B.DEPT_USER=D.deptid " +
-		    	"where row_num>="+((pageNo-1)*countPerPage+1)+" order by "+orderStr+" desc";
-	    }
-	    
-//	    String[] params = {staffCode};
 	    List<Order> orderList = new ArrayList<Order>();
 	    
 	    try {
@@ -86,6 +76,8 @@ public class OrderListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	    
+	    
+	    
 	    String json = PluSoft.Utils.JSON.Encode(orderList);
 		json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
 		response.setCharacterEncoding("UTF-8");
@@ -93,46 +85,7 @@ public class OrderListServlet extends HttpServlet {
 		System.out.println(json);
 	    
 	
-//	    System.out.println("OrderSql=="+OrderSql);
-//	    
-//	    ResultSet OrderRs =null;
-//		try{
-//			OrderRs = Sqlhelper.executeQuery(OrderSql, null);
-//			List<Order> orderList = new ArrayList<Order>();
-//			try {
-//				while (OrderRs.next()) {
-//					Order order = new Order();
-//					order.setOrderId(OrderRs.getString(1));
-//					order.setDeptUser(OrderRs.getString(2));
-//					order.setOrderDate(OrderRs.getString(3));
-//					order.setEndTime(OrderRs.getString(4));
-//					order.setCustomer(OrderRs.getString(5));
-//					order.setOrderStatus(OrderRs.getString(6));
-//					order.setCompanyName(OrderRs.getString(7));
-//					order.setDeptName(OrderRs.getString(8));
-//					order.setConnector(OrderRs.getString(9));
-//					order.setConnectorTel(OrderRs.getString(10));
-//					
-//					orderList.add(order);
-//				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			String json = PluSoft.Utils.JSON.Encode(orderList);
-//			json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
-//			response.setCharacterEncoding("UTF-8");
-//			response.getWriter().append(json).flush();
-//			System.out.println(json);
-//		}catch(Exception e){
-//		}  finally{
-//			try {
-//				if(OrderRs!=null){
-//					OrderRs.close();
-//				}
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
+
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {

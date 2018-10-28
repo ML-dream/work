@@ -20,6 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     body{
         margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
     }
+
+	
+	
     </style>
   </head>
   
@@ -31,12 +34,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <a class="mini-button" style="width:60px;" onclick="search()">查询</a>
     </div>
      -->
+    
+     
     <div class="mini-fit">
+   		
+   		
 
-        <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;" idField="id" allowResize="true"
+        <div id="grid1" class="mini-datagrid" style="width:150%;height:150%;" idField="id" allowResize="true"
             borderStyle="border-left:0;border-right:0;" onrowdblclick="onRowDblClick"
         >
-            <div property="columns">
+            <div property="columns" height='150px' >
                 <div type="indexcolumn" ></div>
                 <div field="machineId" width="100" headerAlign="center">设备编号</div>
 	            <div field="machineName" width="70" headerAlign="center">设备名称 </div>
@@ -81,6 +88,86 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function onRowDblClick(e) {
         onOk();
     }
+    
+    
+    
+    grid.on("drawcell", function (e) {
+        var record = e.record,
+            column = e.column,
+            field = e.field,
+            value = e.value;
+        
+        //将性别文本替换成图片
+        if (column.field == "machineId") {
+            if (e.value == "C0000049") {
+            	//e.cellHtml="<div></div>"
+            	//e.cellStyle = "background-image:url(Notes_Large.png) no-repeat";
+            	<%-- <img src='<%=path %>/machinePicture/testjpg01.jpg' width='100' height='100'  alt='' /> --%>
+                e.cellHtml ="<img src='<%=path %>/machinePicture/testjpg01.jpg' width='50px' height='50px'  alt='' />"
+            } 
+            else {
+            	
+            	/* str += "<span>";
+    	        str += "<a style='margin-right:2px;' title='预约设备' href=javascript:ondEdit(\'" + e.row.orderId+"\',\'"+e.row.connector + "\') ><span class='mini-button-text mini-button-icon icon-edit'>&nbsp;</span></a>";
+    	        str += "</span>"; */
+            	e.cellHtml ="<img src='<%=path %>/machinePicture/testjpg01.jpg' width='50px' height='50px'  alt='' />"
+
+            }
+        }
+
+       /*  //格式化日期
+        if (field == "birthday") {
+            if (mini.isDate(value)) e.cellHtml = mini.formatDate(value, "yyyy-MM-dd");
+
+        }
+
+        //给年龄，增加"岁"字符串
+        if (field == "age") {
+            e.cellHtml = value + "岁";
+        }
+
+        //给帐号列，增加背景色
+        if (field == "loginname") {
+            e.cellStyle = "background:#ecedef";
+        }
+
+        //超过1万工资，红色标识
+        if (field == "salary" && value >= 10000) {
+            e.cellStyle = "color:red;font-weight:bold;";
+        }
+
+        //显示学历
+        if (field == "educational") {
+            for (var i = 0, l = Educationals.length; i < l; i++) {
+                var edu = Educationals[i];
+                if (edu.id == value) {
+                    e.cellHtml = edu.name;
+                    break;
+                }
+            }
+        } */
+
+      /*   //action列，超连接操作按钮
+        if (column.name == "action") {
+            e.cellStyle = "text-align:center";
+            e.cellHtml = '<a href="javascript:edit(\'' + record.id + '\')">Edit</a>&nbsp; '
+                        + '<a href="javascript:del(\'' + record.id + '\')">Delete</a>'
+        } */
+
+      
+
+        //设置行样式
+        if (record.gender == 1) {
+            e.rowCls = "myrow";
+        }
+    });
+
+    
+    
+    
+    
+    
+    
     //////////////////////////////////
     function CloseWindow(action) {
         if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);

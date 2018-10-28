@@ -24,21 +24,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:include page="/commons/miniui_header.jsp" />
   </head>
   <body>
-   <div class="mini-toolbar" style="padding:2px;border:0;">
-    	<!--<a class="mini-button" iconCls="icon-save" plain="false" onclick="save()">保存</a>-->
-<!--		<span class="separator"></span>-->
+  <!--  <div class="mini-toolbar" style="padding:2px;border:0;">
+    	<a class="mini-button" iconCls="icon-save" plain="false" onclick="save()">保存</a>
+		<span class="separator"></span>
     	<a class="mini-button" iconCls="icon-print" plain="false" onclick="print()">导出EXCEL文件</a>
     	<span class="separator"></span>
     	<a class="mini-button" plain="false" iconCls="icon-add" onclick="addItem()">新增</a>
     	<span class="separator"></span>
     	<a class="mini-button" plain="false" iconCls="icon-undo" onclick="javascript:window.history.back(-1);">返回</a>
-    </div> 
+    </div>  -->
     <div>
   	<input id="item_name" name="item_name" class="mini-textbox" onenter="onSearch()"/>
   	<a class="mini-button" plain="fasle" onclick="onSearch()">查询</a>
   	
   	</div>
-   <div id="grid1" class="mini-datagrid" style="width:100%;height:95%;"
+   <%-- <div id="grid1" class="mini-datagrid" style="width:100%;height:95%;"
          borderStyle="border:0;" multiSelect="true"  idField="id" showSummaryRow="true" allowAlternating="true" showPager="true"
          url="ShowMachineNodeInfo">
         <div property="columns">
@@ -105,9 +105,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
       </table>
     </div>
-    </div>
+    </div> --%>
+    
+    
+    
+    <legend>
+			机床基本信息
+		</legend>
+  <div id="add" style="background:#EFEFEF" >
+		<form name="form1" id="form1" method="post" enctype="multipart/form-data">
+			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
+			<tr>
+								<th>机床名称</th>
+			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">机床IP</th>
+			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">连接状态</th>
+			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    </tr>
+			    <tr>
+			    			<th>数控系统</th>
+			    	<td><input id="ratedTime1"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    
+			        <th width="12%">累计开机时间</th>
+			    	<td><input id="planTime1"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">最大轴数</th>
+			    	<td><input id="operAidTime1"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    </tr>
+   
+			</table>
+		</form>
+		</div>
+
+		
+		
+		
+		
+    
      <script type="text/javascript">
     	mini.parse();
+    	
+    	update();
+    	
+    	function update(){
+	    	 
+	    	 var machineId = "<%=request.getParameter("machineId")%>";
+       	$.ajax({
+       		type: "post",
+       		url:"ShowMachineNodeInfo?machineId="+machineId,
+       	
+   			success:function(text){
+   				
+				 
+		           var msg=$.parseJSON(text);
+		           mini.get("ratedTime").setValue(msg.data.machineId);
+		           mini.get("planTime").setValue(msg.data.machineName);
+		           mini.get("operAidTime").setValue(msg.data.machineSpecs);
+   			    },
+   			error : function() {
+   			   
+				}
+       	});
+		}
+    	
+    	
+    	
+    	
+    	
 	    var grid = mini.get("grid1");
 	    var machineId=mini.get("machineId").getValue();
 	    var itemName="";

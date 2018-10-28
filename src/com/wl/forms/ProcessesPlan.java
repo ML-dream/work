@@ -15,6 +15,8 @@ import java.io.Serializable;
 public class ProcessesPlan implements Serializable {
 	private static final long serialVersionUID = 5727725539464112576L;
 	
+	private String machineOrderStart;
+	private String machineOrderEnd;
 	private String processPlanId;
 	private String orderId;
 	private String productId;
@@ -103,6 +105,20 @@ public class ProcessesPlan implements Serializable {
 	private String fax;
 	private double theoryTotalPrice;
 	
+	
+	
+	public String getMachineOrderStart() {
+		return machineOrderStart;
+	}
+	public void setMachineOrderStart(String machineOrderStart) {
+		this.machineOrderStart = machineOrderStart;
+	}
+	public String getMachineOrderEnd() {
+		return machineOrderEnd;
+	}
+	public void setMachineOrderEnd(String machineOrderEnd) {
+		this.machineOrderEnd = machineOrderEnd;
+	}
 	public double getTheoryTotalPrice() {
 		return theoryTotalPrice;
 	}

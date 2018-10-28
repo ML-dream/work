@@ -59,12 +59,12 @@ public class SelectedGanttSaveServlet extends HttpServlet {
 		        String Finish =formatter.format(finish);
 		        String  isCo= "0";         //map2.get("isCo").toString();
 		        String orderId=map2.get("Name").toString();
-		       String productId=map2.get("productId").toString();
+		        String productId=map2.get("productId").toString();
 		        String issueNum="1";//map2.get("issueNum").toString();
 		        String operId=map2.get("operId").toString();
                 String Sql;
-		      String sql ="update processesplan set planstarttime=to_date('"+Start+"','yyyy-mm-dd hh24:mi:ss'),"+
-		      		      "planendtime=to_date('"+Finish+"','yyyy-mm-dd hh24:mi:ss'),"+
+                String sql ="update processesplan set machineorderstart=to_date('"+Start+"','yyyy-mm-dd hh24:mi:ss'),"+
+		      		      "machineorderend=to_date('"+Finish+"','yyyy-mm-dd hh24:mi:ss'),"+
 		    		      " isCo='"+isCo+"' " +
 		      			  "where orderid=? and productId=? and issuenum=?  and operId=?";
 		       /* if(isCo=="1"||isCo.equals("1")){
@@ -92,7 +92,7 @@ public class SelectedGanttSaveServlet extends HttpServlet {
 			String json = "{\"result\":\"操作成功!\"}";
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().append(json).flush();
-;    
+  
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wl.forms.Machine;
 import com.wl.forms.StockInfo;
+import com.wl.forms.dataCollectionTable;
 import com.wl.tools.Sqlhelper;
 
 public class ShowMachineNodeInfo extends HttpServlet {
@@ -39,51 +40,20 @@ public class ShowMachineNodeInfo extends HttpServlet {
 		int pageNo=0;
 	    int countPerPage=20;
 	    int totalCount = 0;
-	    pageNo = Integer.parseInt(request.getParameter("pageIndex"))+1;
-	    countPerPage = Integer.parseInt(request.getParameter("pageSize"));
+	   
 	    String machineId=request.getParameter("machineId");
-	    String itemName=request.getParameter("itemName");
-	    String totalCountSql="";
-	    String sql="";
-	    if(machineId.length()!=0 && itemName.equals("")){
-	    	totalCountSql ="select count(*) from MACHINEINFO_TIME where machineId = '"+machineId+"'";
-		    sql= "select rownum,c.* from (select * from MACHINEINFO_TIME a left join fo_detail b on a.fo_id=b.fo_id  where a.machineId = '"+machineId+"' order by orderId desc ,machineTime) c " + 
-		    		"where rownum between "+ ((pageNo-1)*countPerPage+1)+ " and "+ (countPerPage*pageNo);
-	    }else if(machineId.equals("")&&itemName.equals("")) {
-	    	/*totalCountSql ="select count(*) from stock where warehouse_id='"+machineId+"' and item_name like '%"+itemName+"%'";*/
-		   
-	    	totalCountSql="select count(*) from MACHINEINFO_TIME ";
-		    sql= "select rownum,c.* from (select * from MACHINEINFO_TIME a left join fo_detail b on a.fo_id=b.fo_id  order by orderId desc ,machineTime) c " + 
-		    		"where rownum between "+ ((pageNo-1)*countPerPage+1)+ " and "+ (countPerPage*pageNo);
-	    }else if(machineId.length()!=0 && itemName.length()!=0){
-	    	totalCountSql="select count(*) from MACHINEINFO_TIME where machineId = '" + machineId +"'  andmachineTime like '%"+ itemName+ "%'";
-		    sql= "select rownum,c.* from (select * from MACHINEINFO_TIME a   left join fo_detail b on a.fo_id=b.fo_id  where machineTime like  '%"+ itemName+ "%' and machineId='"+ machineId+"' order by orderId desc ,machineTime) c " + 
-		    		"where rownum between "+ ((pageNo-1)*countPerPage+1)+ " and "+ (countPerPage*pageNo);
-	    	
-	    }else if( machineId.equals("") && itemName.length()!=0){
-	    	
-	    	totalCountSql="select count(*) from MACHINEINFO_TIME where machineTime like '%"+ itemName+ "%'";
-		    sql= "select rownum,c.* from (select * from MACHINEINFO_TIME a   left join fo_detail b on a.fo_id=b.fo_id  where machineTime like  '%"+ itemName+ "%'  order by orderId desc ,machineTime) c " + 
-		    		"where rownum between "+ ((pageNo-1)*countPerPage+1)+ " and "+ (countPerPage*pageNo);
-	    }
 	    
-	    try {
-		    totalCount = Sqlhelper.exeQueryCountNum(totalCountSql, null);
+	    String noticeWillSql = "select t.machineId, t.machineName,t.machineSpec,t.machtype,t.Machmodel,t.MACHMANUFACTURE from machinfo t where machineId = '"+machineId+"'";
+	    List<Machine> notices = new ArrayList<Machine>();
+		try {
+			notices = Sqlhelper.exeQueryList(noticeWillSql,null, Machine.class);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.print("关闭的语句");
 		}
-		
-		 
-		 List<Machine> resultList = new ArrayList<Machine>();
-		 try{
-	     resultList=Sqlhelper.exeQueryList(sql, null, Machine.class);
-	    
-	  	}catch(Exception e){
-	  	e.printStackTrace();
-	  	}
-	  	String json = PluSoft.Utils.JSON.Encode(resultList);
+		String json = PluSoft.Utils.JSON.Encode(notices);
+		json = json.substring(1, json.length()-1);
 		json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
-		//response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter().append(json).flush();
 		System.out.println(json);
 		

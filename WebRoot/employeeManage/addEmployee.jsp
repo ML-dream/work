@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td><label for="staffCode$text"  >员工编号*</label></td>
             <td><input id="staffCode"  name="staffCode" class="mini-textbox" width="100%"  required="true"/></td>
    			<td><label for="staffName$text">员工姓名*</label></td>
-            <td><input id="staffName"  name="staffName" class="mini-textbox"  width="100%" required="true" /></td>
+            <td><input id="staffName"  name="staffName" class="mini-textbox"  width="100%" required="true" onblur="search"/></td>
    			<td><label for="sectionCode$text">所属部门*</label></td>
    			<td><input id="sectionCode" name="sectionCode" class="mini-buttonedit" width="100%" onbuttonclick="onButtonEdit" required="true"/></td>
    			<!--
@@ -98,8 +98,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td><input id="speciality"  name="speciality" class="mini-textbox"  width="100%"/></td>
    		    <td><label for="schoolFrom$text">毕业院校</label></td>
             <td><input id="schoolFrom"  name="schoolFrom" class="mini-textbox"  width="100%" /></td>
-   			<td><label for="RFIDCode$text">RFID号码</label></td>
-            <td><input id="RFIDCode"  name="RFIDCode" class="mini-textbox" width="100%"  /></td>
+   			 <td><label for="RFIDCode$text">RFID号码</label></td>
+            <td><input id="RFIDCode"  name="RFIDCode" class="mini-textbox" width="100%"  /></td> 
+            
+            <td style="display: none;"><label for="companyId$text">客户编号*</label></td>
+            <td style="display: none;"><input id="companyId"  name="companyId" class="mini-textbox" width="100%"  required="true" allowInput="false"/></td>
+            
         </tr>
         
         <tr>
@@ -110,7 +114,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td><label for="leaveTime$text">离职时间</label></td>
   <!--        <td><input id="leaveTime"  name="leaveTime" class="mini-textbox" width="100%"  emptyText="日期格式：2000-01-01"  vtype="date:yyyy-MM-dd"/></td>  -->    
             <td><input id="leaveTime" name ="leaveTime" class="mini-datepicker" width="100%" dateFormat="yyyy-MM-dd" allowInput="true"/></td>
-   		</tr>
+            
+           
+   			<!-- <td><label for="companyName$text">客户名称*</label></td>
+            <td><input id="companyName"  name="companyName" class="mini-textbox"  width="100%" required="true" onblur="search"/></td>
+   		</tr> -->
    	</table>
    </div>
    </fieldSet>
@@ -193,6 +201,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             });
         }
 
+   	    
+   	    
+   	 function search(){
+	        var form = new mini.Form("#userdiv");
+         var data = form.getData();
+   	    data.companyName =mini.get("staffName").getValue();
+         var params = eval("("+mini.encode(data)+")");
+         var url = 'CheckCustomerNameServlet';
+	        jQuery.post(url, params, function(data){
+	        if((data.total)>=1)
+	        alert("该客户已存在");
+	        else
+	        {
+	         var totalcount=data.totalcount+1;
+	         if(totalcount>0&&totalcount<10)
+	         totalcount="00"+totalcount;
+	         else if(totalcount>=10&&totalcount<100)
+	         totalcount="0"+totalcount;
+	         mini.get("companyId").setValue(totalcount);
+	         }
+   		        },'json');
+   		   
+    }
+   	    
+   	    
+   	    
    		function onIDCardsValidation(e) {
             if (e.isValid) {
                 var pattern = /\d*/;

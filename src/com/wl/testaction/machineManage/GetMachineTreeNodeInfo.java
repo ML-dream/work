@@ -43,7 +43,7 @@ public class GetMachineTreeNodeInfo extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String machineName = null;
 		String machineId=request.getParameter("machineId");
-		String sql="select machineName from machineInfo_TIME where machineId='"+machineId+"'";
+		String sql="select machineName from MACHINFO where machineId='"+machineId+"'";
 		String machine="";
 		Machine machine1 =new Machine();
 		try{

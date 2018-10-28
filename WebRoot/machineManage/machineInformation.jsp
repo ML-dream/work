@@ -17,8 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>库存信息</title>
     <style type="text/css">
     	*{margin: 0;padding: 0;}
-    </style>
-  </head>
+    </style>  </head>
   
 	<body style="height: 95%;">
 		   <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
@@ -30,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
 		    </div>
 		    <div title="center" region="center" bodyStyle="overflow:hidden;">
-		        <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;" src="machineManage/showMachineInfo.jsp" border="0"></iframe>
+		        <iframe id="mainframe" frameborder="0" name="main" style="width:100%;height:100%;"  border="0"></iframe>
 		    </div>
 		</div>
 		<script>

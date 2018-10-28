@@ -25,37 +25,38 @@ public class AddMachineServ extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		String machineId = ChineseCode.toUTF8(request.getParameter("machineId").trim());
-		String machineName = ChineseCode.toUTF8(request.getParameter("machineName").trim());
-		String machineSpec = ChineseCode.toUTF8(request.getParameter("machineSpec").trim());
-		String place = ChineseCode.toUTF8(request.getParameter("place").trim());
-		String outCode = ChineseCode.toUTF8(request.getParameter("outCode").trim());
+		request.setCharacterEncoding("utf-8");
+		String machineId = request.getParameter("machineId").trim();
+		String machineName =request.getParameter("machineName").trim();
+		String machineSpec = request.getParameter("machineSpec").trim();
+		String place =request.getParameter("place").trim();
+		String outCode = request.getParameter("outCode").trim();
 		
-		String outDate = ChineseCode.toUTF8(request.getParameter("outDate").trim());
-		String machNum = ChineseCode.toUTF8(request.getParameter("machNum").trim());
-		String workRange = ChineseCode.toUTF8(request.getParameter("workRange").trim());
-		String machType = ChineseCode.toUTF8(request.getParameter("machType").trim());
-		String machModel = ChineseCode.toUTF8(request.getParameter("machModel").trim());
+		String outDate = request.getParameter("outDate").trim();
+		String machNum = request.getParameter("machNum").trim();
+		String workRange = request.getParameter("workRange").trim();
+		String machType = request.getParameter("machType").trim();
+		String machModel = request.getParameter("machModel").trim();
 		
-		String machStandard = ChineseCode.toUTF8(request.getParameter("machStandard").trim());
-		String machManufacture = ChineseCode.toUTF8(request.getParameter("machManufacture").trim());
-		String usedYears = ChineseCode.toUTF8(request.getParameter("usedYears").trim());
-		String machPrice = ChineseCode.toUTF8(request.getParameter("machPrice").trim());
-		String machOldRate = ChineseCode.toUTF8(request.getParameter("machOldRate").trim());
+		String machStandard =request.getParameter("machStandard").trim();
+		String machManufacture = request.getParameter("machManufacture").trim();
+		String usedYears = request.getParameter("usedYears").trim();
+		String machPrice = request.getParameter("machPrice").trim();
+		String machOldRate = request.getParameter("machOldRate").trim();
 		
-		String isKeyMach = ChineseCode.toUTF8(request.getParameter("isKeyMach").trim());
-		String buyDate = ChineseCode.toUTF8(request.getParameter("buyDate").trim());
-		String status = ChineseCode.toUTF8(request.getParameter("status").trim());
-		String power = ChineseCode.toUTF8(request.getParameter("power").trim());
-		String deptId = ChineseCode.toUTF8(request.getParameter("deptId"));
+		String isKeyMach = request.getParameter("isKeyMach").trim();
+		String buyDate = request.getParameter("buyDate").trim();
+		String status =request.getParameter("status").trim();
+		String power = request.getParameter("power").trim();
+		String deptId = request.getParameter("deptId");
 		
-		String runDate = ChineseCode.toUTF8(request.getParameter("runDate"));
-		String worker = ChineseCode.toUTF8(request.getParameter("worker"));
-		String madeDate = ChineseCode.toUTF8(request.getParameter("madeDate"));
-		String checkDate = ChineseCode.toUTF8(request.getParameter("checkDate"));
-		String memo = ChineseCode.toUTF8(request.getParameter("memo"));
-		String hourPercent = ChineseCode.toUTF8(request.getParameter("hourPercent"));
-		String countPercent = ChineseCode.toUTF8(request.getParameter("countPercent"));
+		String runDate = request.getParameter("runDate");
+		String worker = request.getParameter("worker");
+		String madeDate = request.getParameter("madeDate");
+		String checkDate =request.getParameter("checkDate");
+		String memo = request.getParameter("memo");
+		String hourPercent = request.getParameter("hourPercent");
+		String countPercent = request.getParameter("countPercent");
 		
 		String  sql = "insert into machinfo " +
 				"(machineId,machineName,machineSpec,place,outCode," +

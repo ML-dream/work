@@ -35,14 +35,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<tr>
    			<td><label for="orderId$text">订单编号</label></td>
             <td style="width:25%;">
-            <input id="orderHead"  name="orderHead" class="mini-combobox" style="width:30%;" textField="orderHead" valueField="orderHead" emptyText="请选择..."
-    			url="GetOrderHeadServlet" value="NL-XS"  required="true" allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
+            <input id="orderHead"  name="orderHead" class="mini-combobox" style="width:30%;" textField="text" valueField="id" emptyText="请选择..."
+    			url="data/OrderKinds.txt"   required="true" allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
             <input id="orderId"  name="orderId" class="mini-textbox"  width="66%" required="true" readonly="readonly"/>
            	</td>
             <td><label for="customer$text">客    户</label></td>
             <td style="width:20%;"><input id="customer" name="customer" class="mini-buttonedit" width="100%" onbuttonclick="onButtonEdit" textName="companyName" required="true" allowInput="false"/>
    			<td><label for="connector$text">联系人</label></td>
-            <td><input id="connector" name="connector" class="mini-textbox" width="100%" required="true" readonly="readonly"/></td>
+            <td><input id="connector" name="connector" class="mini-textbox" width="100%" required="true" /></td>
         </tr>
        	<tr>
             <td><label for="connectorTel$text">联系电话</label></td>
@@ -52,14 +52,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			url="data/dept.txt"   required="true" allowInput="false" showNullItem="true" nullItemText="请选择..."/>  
             </td>
        
-            <td><label for="orderDate$text">开始日期</label></td>
-            <td><input id="orderDate" name ="orderDate" class="mini-datepicker" width="100%" dateFormat="yyyy-MM-dd" allowInput="true" /></td>
+            <td><label for="orderDate$text">计划开始/结束日期</label></td>
+            <td ><input id="orderDate" name ="orderDate" class="mini-datepicker" width="47%" dateFormat="yyyy-MM-dd" allowInput="true" />
+            至
+            <input id="endTime" name ="endTime" class="mini-datepicker" width="47%" dateFormat="yyyy-MM-dd" ondrawdate="onDrawDate" allowInput="true" /></td>
         </tr>
        	<tr>
-            <td><label for="endTime$text">结束日期</label></td>
-            <td><input id="endTime" name ="endTime" class="mini-datepicker" width="100%" dateFormat="yyyy-MM-dd" ondrawdate="onDrawDate" allowInput="true" /></td>
-            <td><label for="orderStatus$text">状态信息</label></td>
-            <td><input id="orderStatus"  name="orderStatus" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
+            <!-- <td><label for="endTime$text">计划完成日期</label></td>
+            <td><input id="endTime" name ="endTime" class="mini-datepicker" width="100%" dateFormat="yyyy-MM-dd" ondrawdate="onDrawDate" allowInput="true" /></td> -->
+            <td style="display:none" ><label for="orderStatus$text">状态信息</label></td>
+            <td style="display:none" ><input id="orderStatus"  name="orderStatus" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
     			url="data/orderStatus.txt" value="5"  required="true" allowInput="false" showNullItem="true" nullItemText="请选择..." readonly="readonly"/>  
             </td>
            
@@ -73,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td><label for="material$text">材料</label></td>
             <td><input id="material"  name="material" class="mini-combobox"  url= "LoadStuff" width="100%" allowInput="true"/></td>
        </tr>
-       <tr>         
+       <tr style="display:none" >         
           	<td><label for="iswaixie$text">是否外协</label></td>
             <td><input id="iswaixie"  name="iswaixie" class="mini-combobox" style="width:100%;" textField="text" valueField="id" emptyText="请选择..."
     			url="data/trueOrFalse.txt"  allowInput="false" showNullItem="true" nullItemText="请选择..." value="0"/>  
@@ -86,10 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td><input id="drawingId"  name="drawingId" class="mini-textbox"  width="100%"  /></td>
        </tr>
        <!-- ..........................以下为设备的预约信息。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。 -->
-       <tr>
+       <tr style="display:none" >
       <!-- <div class="mini.window" > -->
             <td><label for="equipCode$text">设备预约</label></td>
-	    	<td><input id="equipCode" name="equipCode" class="mini-buttonedit" width="66%" onbuttonclick="onButtonEditMachine" required="true" allowInput="false"/>
+	    	<td><input id="equipCode" name="equipCode" class="mini-buttonedit" width="66%" onbuttonclick="onButtonEditMachine" required="false" allowInput="false"/>
        	
   			<a class="mini-button" iconCls="icon-search" width="30%" plain="false"  onclick="search()">保存并预约设备</a>
   		</td>

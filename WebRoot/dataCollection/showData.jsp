@@ -82,8 +82,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        window.location.href="NoticeDetailServlet?id=" + id+"&isReaded="+isReaded;
 		}
    		
-	    refresh();
-	    setInterval(refresh, 6000);
+	   /*  refresh(); */
+	  /*   setInterval(refresh, 6000); */
    		
    		function refresh(){
    			var grid = mini.get("grid1");

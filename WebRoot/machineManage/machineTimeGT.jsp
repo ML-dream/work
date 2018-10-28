@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 			
 		.mini-rgantt .myitem .mini-gantt-itembg {
-			background: #f6f6c9;
+			background: yellow;
 		}
 			
 		.mini-rgantt .myitem2 .mini-gantt-itembg {
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 			
 		.mini-rgantt .myitem2 .mini-gantt-text {
-			color: White;
+			color: yellow;
 		}
 			
 		.mini-rgantt .myitem .mini-gantt-percentcomplete {
@@ -134,15 +134,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var taskMenu = new RGanttTaskMenu();
 		gantt.setTaskMenu(taskMenu);
 		//这一段干嘛的
-		taskMenu.edit.on("click", function (e) {
+		/* taskMenu.edit.on("click", function (e) {
     		var task = gantt.getSelectedTask();
     		if (task) {
         		alert("编辑任务dd:"+task.Name);
 			}else{
         		alert("请选择一个任务");
     		}
-		});
-
+		}); */
+  
 		//右键菜单
 		var ganttMenu = new RGanttContextMenu();
 		gantt.setGanttBodyMenu(ganttMenu);
@@ -173,21 +173,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		/* 业务代码
 		-----------------------------------------------------------------------------*/
 		//表格右键菜单
-		gantt.setTableBodyMenu({
+		 gantt.setTableBodyMenu({
     		type: "menu",
     		items: [
-        		{ 	type: "menuitem",  text: "设备工序图",
+        		/* { 	type: "menuitem",  text: "设备工序图",
             		onclick: function (e) {
                                 
             		}
-        		},
-        		{ 	type: "menuitem", iconCls: "icon-addnew", text: "新增任务",
+        		}, */
+        		/* { 	type: "menuitem", iconCls: "icon-addnew", text: "新增任务",
             		onclick: function (e) {
                 		var node = gantt.getSelected();
                 		var newTask = gantt.newTask();
                 		gantt.addTask(newTask, node);                
             		}
-        		},
+        		} *//* ,
         		{ 	type: "menuitem", text: "针对此设备排程",
             		onclick: function (e) {
               			//  var node = gantt.getSelected();
@@ -200,14 +200,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		onclick: function (e) {
                 		gantt.deselectAll();
             		}
-        		}
+        		} */
     		]
-		});
+		}); 
 
 		//设置时间线
 		gantt.setTimeLines([
-			{ 	date: new Date(2017, 0, 3), text: "时间线" },
-			{ 	date: new Date(2017, 0, 5), text: "时间线2", style: "width:2px;background:red;" }
+			{ 	date: new Date(2018, 0, 3), text: "时间线" },
+			{ 	date: new Date(2018, 0, 5), text: "时间线2", style: "width:4px;background:red;" }
 		]);
 
 //		function load() {
@@ -248,16 +248,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         function load() {
          gantt.loading();
-       $.ajax({
-       /* url: '../data/lpfdata.txt?d=' + new Date().getTime(),*/
-       url: "machineSeclectTimeGantt?machineId="+machineId,
-        success: function (text) {
-            var data = mini.decode(text);
-            gantt.loadData(data);
-            gantt.unmask();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert("加载失败, 错误码：" + jqXHR.responseText);
+       		$.ajax({
+	       /* url: '../data/lpfdata.txt?d=' + new Date().getTime(),*/
+	       url: "machineSeclectTimeGantt?machineId="+machineId,
+	        success: function (text) {
+	            var data = mini.decode(text);
+	            gantt.loadData(data);
+	            gantt.unmask();
+	        },
+	        error: function (jqXHR, textStatus, errorThrown) {
+	            alert("加载失败, 错误码：" + jqXHR.responseText);
             gantt.unmask();
         }
     });
@@ -268,7 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             //单元格样式
             if (column.name ==orderId ) {
-            	  e.cellHtml = '<b style="color:red;">';
+            	  e.cellHtml = '<b style="color:yellow;">';
             }
 
             //行样式
@@ -299,6 +299,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        if (node.Name == orderId ) {
 	        	//e.cellHtml = '<b style="color:red;">';
 	            cls = "myitem2";
+	            e.rowCls = "deletetask";
+	            e.cellHtml = '<b style="color:yellow;">';
 	        }
 
 	        e.itemCls = cls;
@@ -387,7 +389,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		    //进度100%的任务不允许拖拽
 		    if (task.PercentComplete == 100) {
-		        e.cancel = true;
+		        e.cancel = false;//修改后可以进行修改了！！！
 		    }
 			/*
 		    var dragUpdownCheckbox = document.getElementById("dragUpdown");
@@ -579,7 +581,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    
 		    //将数据转换为JSON字符串
 		    var strJSON = mini.encode(tree);
-		    alert(strJSON);
+		   // alert(strJSON);
 		    var params = { tree: strJSON};
 		    //alert("将甘特图的任务数据提交到服务端进行保存");
 		    //使用jQuery的ajax，把任务数据，发送到服务端进行处理

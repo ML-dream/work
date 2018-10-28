@@ -25,8 +25,10 @@ public class AddEmployeeServlet extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
 		String staffCode = ChineseCode.toUTF8(request.getParameter("staffCode").trim());
-	    String staffName = ChineseCode.toUTF8(request.getParameter("staffName").trim());
+	    String staffName = request.getParameter("staffName").trim();
 	    String sectionCode = ChineseCode.toUTF8(request.getParameter("sectionCode").trim());
 	    String gender = ChineseCode.toUTF8(request.getParameter("gender").trim());
 	    String schoolFrom = ChineseCode.toUTF8(request.getParameter("schoolFrom").trim());
@@ -59,6 +61,21 @@ public class AddEmployeeServlet extends HttpServlet {
 				homePhone+"','"+position+"','"+workTime+"','"+RFIDCode+"','"+QQ+"','"+email+"',to_date('"+birthday+"','yyyy-mm-dd,hh24:mi:ss'),'"+
 				fee+"','"+IDCard+"',to_date('"+joinTime+"','yyyy-mm-dd,hh24:mi:ss'),'N')";
 		System.out.println("addMachineSql=="+addEmployeeSql);
+		
+		//######################################################################//
+		
+		String companyId = request.getParameter("companyId").trim();
+		
+		
+		String  addCustomerSql = "insert into customer " +
+				"(COMPANYID,COMPANYNAME," +
+				"ADDRESS,TELEPHONE,TYPE,connector,connectorTel,ISTOGETHER )values('"+
+				companyId+"','"+staffName+"','"+address+"','"+mobilePhone+"','GQ','"+staffName+"','"+mobilePhone+"','Y')";
+		System.out.println("addMachineSql=="+addCustomerSql);
+		sql_data sqlData = new sql_data();
+		
+		
+		//##########################################################################################//
 //		sql_data sqlData = new sql_data();
 		String result = "保存成功";
 		try {
@@ -68,8 +85,16 @@ public class AddEmployeeServlet extends HttpServlet {
 
 //			request.getRequestDispatcher("employeeManage/editEmployee.jsp").forward(request, response);
 		} catch (SQLException e) {
-			result = "保存失败";
+			result = "保存失败1";
 //			request.setAttribute("addOk", "failure");
+			e.printStackTrace();
+		}
+		try {
+			sqlData.exeUpdateThrowExcep(addCustomerSql);
+			String json = "{\"result\":\"操作成功!\"}";
+			
+		} catch (SQLException e) {
+			result = "保存失败2";
 			e.printStackTrace();
 		}
 		response.setCharacterEncoding("utf-8");
