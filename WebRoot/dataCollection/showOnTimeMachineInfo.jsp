@@ -55,6 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;"> 
   	 <a class="mini-button" iconCls="icon-save" plain="false"  onclick="lookMachineInfo()">查看设备详细记录</a>
+  	 <a class="mini-button" iconCls="icon-save" plain="false"  onclick="max()">最大化测试</a>
 
   	 </div>
   	 
@@ -330,25 +331,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<legend>
 			机床基本信息
 		</legend>
-  <div id="add" style="background:#EFEFEF" >
+  <div id="add1" style="background:#EFEFEF" >
 		<form name="form1" id="form1" method="post" enctype="multipart/form-data">
 			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
 			<tr>
 								<th>机床名称</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<td><input id="machineName"  name="machineName" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			        <th width="12%">机床IP</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
-			    	<th width="12%">连接状态</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    	<td><input id="machineIp"  name="textIndex" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">报警编号</th>
+			    	<td><input id="textIndex"  name="machineIp" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
 			    </tr>
 			    <tr>
 			    			<th>数控系统</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<td><input id="nckType"  name="nckType" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    
 			        <th width="12%">累计开机时间</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<td><input id="poweronTime"  name="poweronTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    	<th width="12%">最大轴数</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<td><input id="numMachAxes"  name="numMachAxes" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    </tr>
    
 			</table>
@@ -360,24 +361,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			机床加工信息
 		</legend>
   <div id="add2" style="background:transparent" >
-		<form name="form1" id="form2" method="post" enctype="multipart/form-data">
+		<form name="form2" id="form2" method="post" enctype="multipart/form-data">
 			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#FFFFFF">
 			<tr>
-					<th>运行模式</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
-			        <th width="12%">加工状态</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
-			    	<th width="12%">机床报警</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+					<th>工件数</th>
+			    	<td><input id="totalParts"  name="totalParts" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">指定主轴转速/th>
+			    	<td><input id="cmdSpeed"  name="cmdSpeed" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">报警信息</th>
+			    	<td><input id="fillText"  name="fillText" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
 			    </tr>
 			    <tr>
-			    			<th>主程序号</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    			<th>程序状态</th>
+			    	<td><input id="progStatus"  name="progStatus" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    
-			        <th width="12%">执行号号</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
-			    	<th width="12%">执行代码</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">程序段序号</th>
+			    	<td><input id="blockNoStr"  name="blockNoStr" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">指定进给倍率</th>
+			    	<td><input id="cmdSpeedRel"  name="cmdSpeedRel" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    </tr>
    
 			</table>
@@ -390,24 +391,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			参数监控
 		</legend>
   <div id="add3" style="background:#EFEFEF" >
-		<form name="form1" id="form2" method="post" enctype="multipart/form-data">
+		<form name="form3" id="form3" method="post" enctype="multipart/form-data">
 			<table class="green_list_table" align="center" width="100%" border="0" style="word-break:break-all;border-collapse:collapse" bgcolor="#EFEFEF">
 			<tr>
-					<th>运行模式</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
-			        <th width="12%">加工状态</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
-			    	<th width="12%">机床报警</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+					<th>主轴数量</th>
+			    	<td><input id="numSpindles"  name="numSpindles" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">主轴运行方式</th>
+			    	<td><input id="opMode"  name="opMode" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">有效通道数量</th>
+			    	<td><input id="numChannels"  name="numChannels" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
 			    </tr>
 			    <tr>
-			    			<th>主程序号</th>
-			    	<td><input id="ratedTime"  name="ratedTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    			<th>常规报警</th>
+			    	<td><input id="numAlarms"  name="numAlarms" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    
-			        <th width="12%">执行号号</th>
-			    	<td><input id="planTime"  name="planTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
-			    	<th width="12%">执行代码</th>
-			    	<td><input id="operAidTime"  name="operAidTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			        <th width="12%">刀具啮合时间</th>
+			    	<td><input id="cuttingTime"  name="cuttingTime" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
+			    	<th width="12%">主轴负载率</th>
+			    	<td><input id="driveLoad"  name="driveLoad" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    </tr>
    
 			</table>
@@ -425,6 +426,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var myChart = echarts.init(dom);
 		var myChart1 = echarts.init(dom1);
 		var myChart2 = echarts.init(dom2);
+		var testZhi = 0 ;
 		
 		var app = {};
 		option = null;
@@ -448,11 +450,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	},
 			    series: [//很重要，对于仪表盘来说可以调整几乎所有的数据相关，细节部分的显示
 			        {
-			            name: '业务指标',//图标的名字，在悬停时进行显示
+			            name: '',//图标的名字，在悬停时进行显示
 			            type: 'gauge',//调用不同的图标函数
 			            radius: '90%',//调整表的大小
 			            detail: {formatter:'{value}%'},//detail，用处很大，控制实时显示的数据格式，大小等等重要！！！
-			            data: [{value: 50, name: '完成率0'}],//这个用来显示实时现实的数值内容！并且name后面显示单位，但是
+			            data: [{value: 100, name: '完成率0'}],//这个用来显示实时现实的数值内容！并且name后面显示单位，但是
 			            //可以用来显示其他的任意的，比如显示图标的名字
 			            
 			            min:0,//显示仪表盘的显示范围！
@@ -630,7 +632,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			};
 
 			setInterval(function () {
-			    option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+			    option.series[0].data[0].value = testZhi//(Math.random() * 100).toFixed(2) - 0;
 			    option1.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
 			    option2.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
 			    myChart.setOption(option, true);
@@ -659,10 +661,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		/* var grid = mini.get("grid1");
 	    grid.load(); */
 	    
-	    /*  $function(){
+	   $(function(){
 	     update();
-         setInterval(update, 3000); 
-	    }  */
+         setInterval(update, 300); 
+	    })  
 	  /*   update(); */
 	    /*  setInterval(update, 500);  */
 	    function onclick(){
@@ -683,9 +685,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				
 				   /* alert("更新成功"); */
 		           var msg=$.parseJSON(text);
-		           mini.get("ratedTime").setValue(msg.data.id);
-		           mini.get("planTime").setValue(msg.data.xaxisfeedspeed);
-		           mini.get("operAidTime").setValue(msg.data.xaxiscoordinates);
+		           mini.get("numSpindles").setValue(msg.data.aaLoad1);
+		           mini.get("numChannels").setValue(msg.data.aaLoad2);
+		           mini.get("machineName").setValue(msg.data.aaLoad3);
+		           testZhi = msg.data.aaLoad1;
     			    },
     			error : function() {
     			    /* alert("更新失败"); */
@@ -728,6 +731,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			
 			 var machineId = "<%=request.getParameter("machineId")%>";
 			window.location.href="dataCollection/showData.jsp?machineId="+machineId;
+		}
+		function max(){
+   			
+			 var machineId = "<%=request.getParameter("machineId")%>";
+			window.location.href="mainindex.jsp?machineId="+machineId;
 		}
    		
    		

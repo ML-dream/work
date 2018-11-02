@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <listener>
     <listener-class>DataCollection.MachineCollection</listener-class>
@@ -6834,5 +6834,49 @@
   <servlet-mapping>
     <servlet-name>insertMachine</servlet-name>
     <url-pattern>/insertMachine</url-pattern>
+  </servlet-mapping>
+<servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>dateLInes</servlet-name>
+    <servlet-class>machineOrderYuyue.yuYue.dateLInes</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>load</servlet-name>
+    <servlet-class>machineOrderYuyue.yuYue.load</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>bookingSubmit</servlet-name>
+    <servlet-class>machineOrderYuyue.yuYue.bookingSubmit</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>dsds</servlet-name>
+    <servlet-class>machineOrderYuyue.yuYue.dsds</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>dateLInes</servlet-name>
+    <url-pattern>/dateLInes</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>load</servlet-name>
+    <url-pattern>/load</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>bookingSubmit</servlet-name>
+    <url-pattern>/bookingSubmit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dsds</servlet-name>
+    <url-pattern>/servlet/dsds</url-pattern>
   </servlet-mapping>
 </web-app>

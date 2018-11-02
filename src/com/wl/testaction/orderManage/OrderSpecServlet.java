@@ -49,11 +49,24 @@ public class OrderSpecServlet extends HttpServlet {
 		String[] params = {orderId};
 		Order order = new Order();
 		
+		
 		try {
 			order = Sqlhelper.exeQueryBean(orderSql, params, Order.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("ssssssssssssssssssssssssssssssssssssssssssss");
+		//System.out.println(order.);
+		HttpSession session = request.getSession();
+		session.setAttribute("connector",order.getConnector());
+		//request.setCharacterEncoding("utf-8");
+		//response.setContentType("text/html;charset=utf-8");
+		
+		
+		/*response.setCharacterEncoding("UTF-8");
+		
+		response.setContentType("text/html;charset=UTF-8");
+*/
 //		String json = JSON.Encode(order);
 		request.setAttribute("order", order);
 		request.setAttribute("para", para);
@@ -99,9 +112,12 @@ public class OrderSpecServlet extends HttpServlet {
 		else if(isModify.equals("1"))
 		{
 			request.getRequestDispatcher("orderManage/ModifyOrderSpec.jsp").forward(request, response);
+		}else if(isModify.equals("2")){
+			request.getRequestDispatcher("orderManage/machineOrderToo.jsp").forward(request, response);
+			
 		}else {
 			
-			request.getRequestDispatcher("orderManage/machineOrderToo.jsp").forward(request, response);
+			request.getRequestDispatcher("orderManage/machineShowOrder.jsp").forward(request, response);
 			}
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
