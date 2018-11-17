@@ -6,8 +6,11 @@
 /c3p0-config.xml
 /cfmes
 /com
+/file
+/job
+/lib
+/log4j.properties
+/machineOrderYuyue
 /doExamineCheckoutServlet.class
 /editOrderStatusServlet.class
 /getCompanyIdServlet.class
-/job
-/machineOrderYuyue

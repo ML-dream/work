@@ -338,9 +338,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>机床名称</th>
 			    	<td><input id="machineName"  name="machineName" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			        <th width="12%">机床IP</th>
-			    	<td><input id="machineIp"  name="textIndex" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
+			    	<td><input id="machineIp"  name="machineIp" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
 			    	<th width="12%">报警编号</th>
-			    	<td><input id="textIndex"  name="machineIp" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
+			    	<td><input id="textIndex"  name="textIndex" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
 			    </tr>
 			    <tr>
 			    			<th>数控系统</th>
@@ -366,7 +366,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 					<th>工件数</th>
 			    	<td><input id="totalParts"  name="totalParts" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
-			        <th width="12%">指定主轴转速/th>
+			        <th width="12%">指定主轴转速</th>
 			    	<td><input id="cmdSpeed"  name="cmdSpeed" class="mini-textbox" style="background-color:blue" width="100%" style="background-color:blue" allowInput="false" vtype="float"/></td>
 			    	<th width="12%">报警信息</th>
 			    	<td><input id="fillText"  name="fillText" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
@@ -402,7 +402,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	<td><input id="numChannels"  name="numChannels" class="mini-textbox" style="background-color:blue" allowInput="false" width="100%" vtype="float"/></td>
 			    </tr>
 			    <tr>
-			    			<th>常规报警</th>
+			    			<th>常规报警数</th>
 			    	<td><input id="numAlarms"  name="numAlarms" class="mini-textbox"  width="100%" allowInput="false" vtype="float"/></td>
 			    
 			        <th width="12%">刀具啮合时间</th>
@@ -426,7 +426,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var myChart = echarts.init(dom);
 		var myChart1 = echarts.init(dom1);
 		var myChart2 = echarts.init(dom2);
-		var testZhi = 0 ;
+		//var testZhi = 0 ;
+		var speedOvr = 0;
+        var actSpeed = 0;
+        var actSpeedRel=0;
 		
 		var app = {};
 		option = null;
@@ -458,7 +461,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            //可以用来显示其他的任意的，比如显示图标的名字
 			            
 			            min:0,//显示仪表盘的显示范围！
-			            max:120,
+			            max:500,
 			            splitNumber:5,//显示将上面的这个范围划分为多大的小范围，就是刻度
 			            axisLine: {            // 坐标轴线，用来控制仪表盘外边的盘的边的！粗细！
 			                lineStyle: {       // 属性lineStyle控制线条样式
@@ -590,7 +593,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            data: [{value: 5, name: '完成率2'}],
 			            
 			            min:0,
-			            max:220,
+			            max:550,
 			            splitNumber:5,
 			            axisLine: {            // 坐标轴线
 			                lineStyle: {       // 属性lineStyle控制线条样式
@@ -632,9 +635,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			};
 
 			setInterval(function () {
-			    option.series[0].data[0].value = testZhi//(Math.random() * 100).toFixed(2) - 0;
-			    option1.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-			    option2.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+			    option.series[0].data[0].value = speedOvr;//testZhi//(Math.random() * 100).toFixed(2) - 0;
+			    option1.series[0].data[0].value = actSpeed;//(Math.random() * 100).toFixed(2) - 0;
+			    option2.series[0].data[0].value = actSpeedRel; //(Math.random() * 100).toFixed(2) - 0;
 			    myChart.setOption(option, true);
 			    myChart1.setOption(option1, true);
 			    myChart2.setOption(option2, true);
@@ -685,10 +688,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				
 				   /* alert("更新成功"); */
 		           var msg=$.parseJSON(text);
-		           mini.get("numSpindles").setValue(msg.data.aaLoad1);
+		           mini.get("machineName").setValue("车铣复合加工中心");
+		           mini.get("machineIp").setValue(msg.data.createTime);//("192.168.0.1");
+		           /* mini.get("numSpindles").setValue(msg.data.aaLoad1);
 		           mini.get("numChannels").setValue(msg.data.aaLoad2);
-		           mini.get("machineName").setValue(msg.data.aaLoad3);
-		           testZhi = msg.data.aaLoad1;
+		           mini.get("machineName").setValue(msg.data.aaLoad3); */
+		           mini.get("textIndex").setValue(msg.data.textIndex);
+		           mini.get("nckType").setValue(msg.data.nckType);
+		           mini.get("poweronTime").setValue(msg.data.poweronTime);
+		           mini.get("numMachAxes").setValue(msg.data.numMachAxes);
+		           mini.get("totalParts").setValue(msg.data.totalParts);
+		           mini.get("cmdSpeed").setValue(msg.data.cmdSpeed);
+		           mini.get("fillText").setValue(msg.data.fillText);
+		           mini.get("progStatus").setValue(msg.data.progStatus);
+		           mini.get("blockNoStr").setValue(msg.data.aaMm1);
+		           mini.get("cmdSpeedRel").setValue(msg.data.cmdSpeedRel);
+		           mini.get("numSpindles").setValue(msg.data.numSpindles);
+		           mini.get("opMode").setValue(msg.data.opMode);
+		           mini.get("numChannels").setValue(msg.data.numChannels);
+		           mini.get("numAlarms").setValue(msg.data.numAlarms);
+		           mini.get("cuttingTime").setValue(msg.data.cuttingTime);
+		           mini.get("driveLoad").setValue(msg.data.driveLoad);
+		           //mini.get("opMode").setValue(msg.data.opMode);
+		           
+		           //testZhi = msg.data.aaLoad1;
+		           speedOvr = msg.data.speedOvr;
+		           actSpeed = msg.data.actSpeed;
+		           actSpeedRel=msg.data.actSpeedRel;
     			    },
     			error : function() {
     			    /* alert("更新失败"); */

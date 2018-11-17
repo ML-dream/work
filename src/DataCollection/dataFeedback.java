@@ -68,7 +68,7 @@ public class dataFeedback extends HttpServlet {
 		
 		String machineInfoDataName = getDatabaseName(machineId);
 		
-		String machineDataInfoSql = "select nckType,numChannels,numAlarms,numMachAxes,numSpindles,poweronTime,operatingTime,cuttingTime,cycleTime,progName,blockNoStr,totalParts,speedOvr,driveLoad,cmdSpeed,actSpeed,cmdConstCutSpeed,actTNumber,actFeedRate,cmdFeedRate,actSpeedRel,cmdSpeedRel,fillText,textIndex, aaMm1,aaMm2, aaMm2,aaMm3,aaMm4,aaMm5,aaMw1,aaMw2,aaMw3,aaMw4,aaMw5,progDistToGo1,progDistToGo2,progDistToGo3,progDistToGo4,progDistToGo5,aaLoad1,aaLoad2,aaLoad3,aaLoad4,aaLoad5, CASE opmode  WHEN 1 THEN '亚洲' when 2 then 'dddd' ELSE '其他' END as opmode, CASE progStatus  WHEN 4 THEN '取消'  WHEN 2 THEN '停止' WHEN 3 THEN '运行' WHEN 4 THEN '运行' else   '获取失败'  END as progStatus    from " + machineInfoDataName ;
+		String machineDataInfoSql = "select nckType,createtime,numChannels,numAlarms,numMachAxes,numSpindles,poweronTime,operatingTime,cuttingTime,cycleTime,progName,blockNoStr,totalParts,speedOvr,driveLoad,cmdSpeed,actSpeed,cmdConstCutSpeed,actTNumber,actFeedRate,cmdFeedRate,actSpeedRel,cmdSpeedRel,fillText,textIndex, aaMm1,aaMm2, aaMm2,aaMm3,aaMm4,aaMm5,aaMw1,aaMw2,aaMw3,aaMw4,aaMw5,progDistToGo1,progDistToGo2,progDistToGo3,progDistToGo4,progDistToGo5,aaLoad1,aaLoad2,aaLoad3,aaLoad4,aaLoad5, CASE opmode  WHEN 1 THEN '亚洲' when 2 then 'dddd' ELSE '其他' END as opmode, CASE progStatus  WHEN 4 THEN '取消'  WHEN 2 THEN '停止' WHEN 3 THEN '运行' WHEN 4 THEN '运行' else   '获取失败'  END as progStatus    from " + machineInfoDataName ;
 		List<machineDataBean> notices = null;
 		try {
 			notices = Sqlhelper.exeQueryList(machineDataInfoSql,null, machineDataBean.class);
