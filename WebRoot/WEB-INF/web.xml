@@ -5767,14 +5767,8 @@
     <servlet-name>getCompanyIdServlet</servlet-name>
     <url-pattern>/getCompanyIdServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CheckCustomerNameServlet</servlet-name>
-    <url-pattern>/CheckCustomerNameServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CheckEndTimeServlet</servlet-name>
-    <url-pattern>/CheckEndTimeServlet</url-pattern>
-  </servlet-mapping>
+ 
+ 
   <servlet-mapping>
     <servlet-name>getPayFormServlet</servlet-name>
     <url-pattern>/getPayFormServlet</url-pattern>

@@ -3,7 +3,7 @@ package com.wl.testaction.warehouse.orderstatistics;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.jms.Session;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

@@ -1,26 +1,26 @@
-
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%
 
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html>
+
 <html>
 <head>
     <title>场地预约</title>
     
 
 <meta charset="utf-8">
-<<!-- meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta content="always" name="referrer">
 
 <meta http-equiv="Cache-Control" content="no-siteapp"/>
-<meta name="keywords" content="湖南大学,体育场,体育场馆管理与预约系统,体育场馆预约,体育场馆管理,运动相册">
-<meta name="description" content="湖南大学体育场馆管理与预约系统">
- -->
+<meta name="keywords" content="NUAA">
+<meta name="description" content="NUAA设备预约系统">
+
 <script>
     var $ctx = "/gym";
     var $ctxStatic = "/gym/static";
@@ -85,49 +85,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--style end-->
 </head>
 
-<body>
+<body >
 <div class="article_box">
     <!-- header开始 -->
 
 
-<!-- header开始 -->
-<!-- 顶部标题和注册登录 -->
-<!-- <div class="index_title">
-    <div class="title_left" >
-        <span id="activeUser" style="color:#fba979">戴志强&nbsp;</span>
-        您好，欢迎访问湖南大学体育场馆管理与预约系统
-        <span style="margin-left:5px; color:orangered;">目前系统正在试运行期间，如有问题，请将截图和问题描述，发送到cgzx@hnu.edu.cn邮箱进行反馈，谢谢大家！</span>
-    </div>
-    <div class="title_right" style="display:none;" id="noLoginDiv">退出登录显示
-        <a href="/gym/login">登录</a>
-        <span> | </span>
-        <a href="/gym/register">注册</a>
-    </div>
-    <div class="title_right2" id="loginDiv">登录后显示
-        <a href="/gym/order">我的预约</a>
-        <span> | </span>
-        <a class="_exit" href="#" onclick="loginout()">退出</a>
-    </div>
-</div> -->
-<!-- 顶部标题部分结束 -->
-<!-- logo -->
-<!-- <div class="_logo">
-    <div class="imgbox"></div>
-</div> -->
-<!-- logo结束 -->
-<!-- 导航栏开始 -->
-<!-- <nav class="index_nav">
-    <ul>
-        <li><a style="font-size: 16px;" id="index" href="/gym/index">首页</a></li>
-        <li><a style="font-size: 16px;" id="intro" href="/gym/intro">场馆介绍</a></li>
-        <li><a style="font-size: 16px;" id="book" href="/gym/book">场地预约</a></li>
-        <li><a style="font-size: 16px;" id="info" href="/gym/info?type=1">新闻中心</a></li>
-        <li><a style="font-size: 16px;" id="album" href="/gym/album">运动相册</a></li>
-        <li><a style="font-size: 16px;" id="publicity" href="/gym/publicity">免费服务公示</a></li>
-        
-    </ul>
-</nav> -->
-<!-- /header结束 -->
+
 
 <script type="text/javascript">
     /**
@@ -248,13 +211,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
     <!-- /header结束 -->
 
-    <!-- 当前位置开始 -->
-    <!-- <div id="position">
-        当前位置：首页>场地预约
-    </div> -->
-    <!-- 当前位置结束 -->
-
-    <!-- 内容部分 -->
+ 
     <article>
         <div class="yuyueBox"><!-- 预约内容块开始 -->
             <div class="venue_first">
@@ -548,11 +505,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                  data-price="{{price}}"
                                                  data-type="session">
                                                 <div class="col-xs-12 p-xxs">
-                                                    <label class="col-xs-3 p-n m-b-n text-right">时间：</label>
+                                                    <label class="col-xs-3 p-n m-b-n text-right">时间</label>
                                                     <div class="col-xs-9 word-wrap">{{sessionTime}}</div>
                                                 </div>
                                                 <div class="col-xs-12 p-xxs">
-                                                    <label class="col-xs-3 p-n m-b-n text-right">场地：</label>
+                                                    <label class="col-xs-3 p-n m-b-n text-right">场地</label>
                                                     <div class="col-xs-9 word-wrap">{{siteName}}</div>
                                                 </div>
                                                 <i class="iconfont icon-shanchu text-danger" data-id="{{uid}}"
@@ -616,14 +573,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<!-- <footer>
-    <p>湖南大学&copy;版权所有&nbsp;&nbsp;&nbsp;Email: cgzx@hnu.edu.cn&nbsp;&nbsp;&nbsp;
-        <a href="http://www.szyangda.com/index.html" target="_blank">技术支持:湖南洋达信息科技有限公司</a>
-    </p>
-    <p>
-        本网站不支持360浏览器兼容模式以及IE9以下的浏览器访问，推荐大家使用谷歌浏览器或使用360浏览器极速模式进行访问
-    </p>
-</footer> -->
+
 
 <div class="hover-booking"><!-- 鼠标右边的tips -->
     <p>姓名：<span id="user-name"></span></p>

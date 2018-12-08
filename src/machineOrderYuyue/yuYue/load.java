@@ -179,17 +179,20 @@ public class load extends HttpServlet {
 		loadJson.setContent(contentBean);//此处需要传入一个contentbean
 		
 		
-		
+		response.setContentType("application/json;charset=utf-8");
 		  
-        JSONObject json = JSONObject.fromObject(loadJson);
+        //JSONObject json = JSONObject.fromObject(loadJson);
        // JSONObject json=  JSONObject.fromObject(jsonBean);
-        String json1 = json.toString();
-		//String json = PluSoft.Utils.JSON.Encode(notices);
+        //String json1 = json.toString();
+        String json = PluSoft.Utils.JSON.Encode(loadJson);
+        //response.setCharacterEncoding("UTF-8");
+		response.getWriter().append(json).flush();
+		System.out.println(json);
 		//json = json.substring(1, json.length()-1);
 		//json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append(json1).flush();
-		System.out.println(json1);
+		/*response.setCharacterEncoding("UTF-8");*/
+		/*response.getWriter().append(json1).flush();
+		System.out.println(json1);*/
 	}
 
 }

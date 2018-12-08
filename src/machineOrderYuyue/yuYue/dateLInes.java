@@ -1,7 +1,5 @@
 package machineOrderYuyue.yuYue;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -18,11 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import machineOrderYuyue.beans.*;
 import net.sf.json.JSONObject;
-
-
-
-
-
 
 public class dateLInes extends HttpServlet {
 
@@ -69,14 +62,14 @@ public class dateLInes extends HttpServlet {
 	        jsonBean.setMsg("操作成功");
 	        jsonBean.setNo(2000);
 	        jsonBean.setNow(time);
-	        
+	        response.setContentType("application/json;charset=utf-8");
 	        JSONObject json = JSONObject.fromObject(jsonBean);
 	       // JSONObject json=  JSONObject.fromObject(jsonBean);
 	        String json1 = json.toString();
 			//String json = PluSoft.Utils.JSON.Encode(notices);
 			//json = json.substring(1, json.length()-1);
 			//json = "{\"total\":"+totalCount+",\"data\":"+json+"}";
-			response.setCharacterEncoding("UTF-8");
+			/*response.setCharacterEncoding("UTF-8");*/
 			response.getWriter().append(json1).flush();
 			System.out.println(json1);
 	}

@@ -56,6 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<div class="mini-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;"> 
   	 <a class="mini-button" iconCls="icon-save" plain="false"  onclick="lookMachineInfo()">查看设备详细记录</a>
   	 <a class="mini-button" iconCls="icon-save" plain="false"  onclick="max()">最大化测试</a>
+  	 
 
   	 </div>
   	 
@@ -761,9 +762,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function max(){
    			
 			 var machineId = "<%=request.getParameter("machineId")%>";
-			window.location.href="mainindex.jsp?machineId="+machineId;
+			window.open("dataCollection/showData.jsp");/* "mainindex.jsp?machineId="+machineId; */
 		}
-   		
+   			
    		
    		
 		
